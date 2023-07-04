@@ -1,6 +1,6 @@
 @extends('home.layouts.app')
 
-@section('title', 'Produk Desa')
+@section('title', 'Produk Kelurahan')
 
 @section('style')
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">

@@ -58,9 +58,9 @@
                     <li class="nav-item m-1">
                         <a class="nav-link tab {{ request('jenis') == 'laporan' ? 'active' : '' }}" href="{{ URL::current() }}?jenis=laporan&tahun={{ request('tahun') }}"><i class="fas fa-money-check-alt mr-2"></i>Laporan</a>
                     </li>
-                    <li class="nav-item m-1">
+                    {{-- <li class="nav-item m-1">
                         <a class="nav-link tab {{ request('jenis') == 'grafik' ? 'active' : '' }}" href="{{ URL::current() }}?jenis=grafik&tahun={{ request('tahun') }}"><i class="fas fa-chart-bar mr-2"></i>Grafik</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <form id="form-tahun" action="{{ URL::current()}}" method="GET">
@@ -83,13 +83,19 @@
                         @php
                             $anggaran_jenis = 0;
                             $realisasi_jenis = 0;
+
+                            // dd($jenis_anggaran);
+
+
                             foreach ($jenis_anggaran as $kelompok_jenis_anggaran) {
                                 foreach ($kelompok_jenis_anggaran->anggaran_realisasi as $value) {
                                     $tahun = request('tahun') ? request('tahun') : date('Y');
-                                    if ($value->tahun == $tahun) {
+                                    // $idUser = request('user') ? request('user') : Auth::user()->id;
+                                    if (($value->tahun == $tahun) && ($value->user_id == Auth::user()->id)) {
                                         $anggaran_jenis += $value->nilai_anggaran;
                                         $realisasi_jenis += $value->nilai_realisasi;
                                     }
+                                    
                                 }
                             }
                         @endphp
@@ -108,7 +114,7 @@
                                 foreach ($kelompok_jenis_anggaran as $detail_jenis) {
                                     foreach ($detail_jenis->anggaran_realisasi as $value) {
                                         $tahun = request('tahun') ? request('tahun') : date('Y');
-                                        if ($value->tahun == $tahun) {
+                                        if (($value->tahun == $tahun) && ($value->user_id == Auth::user()->id)) {
                                             $anggaran_kelompok += $value->nilai_anggaran;
                                             $realisasi_kelompok += $value->nilai_realisasi;
                                         }
@@ -143,7 +149,7 @@
                                     }
                                     foreach ($detail->anggaran_realisasi as $value) {
                                         $tahun = request('tahun') ? request('tahun') : date('Y');
-                                        if ($value->tahun == $tahun) {
+                                        if (($value->tahun == $tahun) && ($value->user_id == Auth::user()->id)) {
                                             $anggaran += $value->nilai_anggaran;
                                             $realisasi += $value->nilai_realisasi;
                                         }

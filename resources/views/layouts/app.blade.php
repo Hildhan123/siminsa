@@ -32,7 +32,7 @@
     </title>
 
     <!-- Favicon -->
-    <link href="@if($desa->logo) {{ asset(Storage::url($desa->logo))}} @else {{asset('storage/kominfo.png')}} @endif" rel="icon" type="image/png">
+    <link href="{{asset('storage/kominfo.png')}}" rel="icon" type="image/png">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">

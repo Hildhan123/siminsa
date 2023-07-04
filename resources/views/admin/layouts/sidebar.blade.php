@@ -68,10 +68,19 @@
                     <span class="nav-link-inner--text">Dashboard</span>
                 </a>
             </li>
+        </ul>
+        <hr class="my-3">
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link @if(Request::segment(2) == 'tambah-data') active @endif" href="{{ route('admin.tambah-data') }}">
-                    <i class="fas fa-database text-blue"></i>
+                    <i class="fas fa-database text-orange"></i>
                     <span class="nav-link-inner--text">Tambah Data</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if(Request::segment(2) == 'dump-data') active @endif" href="{{ route('admin.dump') }}">
+                    <i class="fas fa-plus text-orange"></i>
+                    <span class="nav-link-inner--text">Dump Data</span>
                 </a>
             </li>
         </ul>

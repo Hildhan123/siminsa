@@ -48,12 +48,63 @@
     @include('layouts.components.alert')
     <div class="row mt-4 justify-content-center">
         <div class="single-service bg-white rounded shadow container">
+            <h4> Navbar Parent </h4>
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead align="center">
+                        <tr>
+                            <th>Order</th>
+                            <th>Title</th>
+                            <th>Tipe</th>
+                            <th>Url</th>
+                            <th>Target</th>
+                            <th>Enable</th>
+                            <th>Aksi</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($parent as $index)
+                            <tr>
+                                <td data-title="Order">{{ $index->order }}</td>
+                                <td data-title="Title">{{ $index->title }}</td>
+                                <td data-title="Tipe">
+                                    @if ($index->type == 1)
+                                        External Url
+                                    @elseif ($index->type == 2)
+                                        Site Link
+                                    @elseif ($index->type == 3)
+                                        Page
+                                    @else
+                                        Modul
+                                    @endif
+                                </td>
+                                <td data-title="Url">{{ $index->url }}</td>
+                                <td data-title="Target">{{ $index->target }}</td>
+                                <td data-title="Enable">{{ $index->enable }}</td>
+                                <td data-title="Aksi" align="center">
+                                    <a href="{{ Route('navbar.edit', ['navbar' => $index->id]) }}"><i
+                                            class="fas fa-edit"></i></a> |
+                                    <a data-action="{{ route('navbar.destroy', $index->id) }}" data-toggle="modal"
+                                        href="#modal-hapus" title="Hapus"><i class="fas fa-trash"
+                                            style="color: red"></i></a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                Tidak Ada data
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Navbar Child </h4>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead align="center">
                         <tr>
-                            <th>Id</th>
+                            <th>Order</th>
                             <th>Parent</th>
                             <th>Title</th>
                             <th>Tipe</th>
@@ -65,17 +116,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $no = 1 @endphp
-                        @forelse ($navbar as $index)
+                        @forelse ($child as $index)
                             <tr>
-                                <td data-title="Id">{{ $index->id }}</td>
-                                <td data-title="Parent">{{$index->parent}}</td>
+                                <td data-title="Order">{{ $index->order }}</td>
+                                <td data-title="Parent">
+                                    @if ($index->parent)
+                                    @foreach ($parent as $navbarItem)
+                                        @if ($navbarItem->id == $index->parent)
+                                            {{ $navbarItem->title }}
+                                        @break
+                                    @endif
+                                @endforeach
+                                @endif
+                                </td>
                                 <td data-title="Title">{{ $index->title }}</td>
                                 <td data-title="Tipe">
-                                    @if ($index->type == 1)External Url
-                                    @elseif ($index->type == 2)Site Link
-                                    @elseif ($index->type == 3)Page
-                                    @else Modul @endif
+                                    @if ($index->type == 1)
+                                        External Url
+                                    @elseif ($index->type == 2)
+                                        Site Link
+                                    @elseif ($index->type == 3)
+                                        Page
+                                    @else
+                                        Modul
+                                    @endif
                                 </td>
                                 <td data-title="Url">{{ $index->url }}</td>
                                 <td data-title="Target">{{ $index->target }}</td>

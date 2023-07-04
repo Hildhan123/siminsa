@@ -48,7 +48,7 @@
                                     foreach ($jenis_anggaran as $kelompok_jenis_anggaran) {
                                         foreach ($kelompok_jenis_anggaran->anggaran_realisasi as $value) {
                                             $tahun = request('tahun') ? request('tahun') : date('Y');
-                                            if ($value->tahun == $tahun) {
+                                            if (($value->tahun == $tahun) && ($value->user_id == $desa->user_id)) {
                                                 $anggaran_jenis += $value->nilai_anggaran;
                                                 $realisasi_jenis += $value->nilai_realisasi;
                                             }
@@ -71,7 +71,7 @@
                                         foreach ($kelompok_jenis_anggaran as $detail_jenis) {
                                             foreach ($detail_jenis->anggaran_realisasi as $value) {
                                                 $tahun = request('tahun') ? request('tahun') : date('Y');
-                                                if ($value->tahun == $tahun) {
+                                                if (($value->tahun == $tahun) && ($value->user_id == $desa->user_id)) {
                                                     $anggaran_kelompok += $value->nilai_anggaran;
                                                     $realisasi_kelompok += $value->nilai_realisasi;
                                                 }
@@ -111,7 +111,7 @@
                                             }
                                             foreach ($detail->anggaran_realisasi as $value) {
                                                 $tahun = request('tahun') ? request('tahun') : date('Y');
-                                                if ($value->tahun == $tahun) {
+                                                if (($value->tahun == $tahun) && ($value->user_id == $desa->user_id)) {
                                                     $anggaran += $value->nilai_anggaran;
                                                     $realisasi += $value->nilai_realisasi;
                                                 }

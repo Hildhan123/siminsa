@@ -6,13 +6,13 @@ use DB;
 
 trait Traits
 {
-    public function getUserId($data)
-    {
-        $data = $data;
-        $data['user_id'] = Auth::user()->id;
+    // public function getUserId($data)
+    // {
+    //     $data = $data;
+    //     $data['user_id'] = Auth::user()->id;
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
     public function getTablebyUser($table)
     {
@@ -65,7 +65,7 @@ trait Traits
                     ['user_id','=',$desa->user_id]
                     ])
                 ->whereNull('parent')
-                ->orderBy('id', 'asc')
+                ->orderBy('order', 'asc')
                 ->get();
     
             $menuItems = [];
@@ -78,7 +78,7 @@ trait Traits
                             ['user_id','=',$desa->user_id],
                             ['enable','=', 1]
                             ])
-                        ->orderBy('id', 'asc')
+                        ->orderBy('order', 'asc')
                         ->get(),
                 ];
                 $menuItems[] = $menu;

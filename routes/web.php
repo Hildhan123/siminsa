@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +32,7 @@ Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kel
     Route::get('/potensi-kelurahan', 'PotensiController@show')->name('potensi.show');
     Route::get('/potensi-kelurahan/detail/{potensi}/{slug}', 'PotensiController@detail')->name('potensi.detail');
     Route::get('/produk-kelurahan', 'ProdukController@show')->name('produk.show');
-    Route::get('/tautan-kelurahan', 'TautanController@show')->name('tautan.show');
+    //Route::get('/tautan-kelurahan', 'TautanController@show')->name('tautan.show');
     //Route::get('/produk-kelurahan/detail/{produk}/{slug}', 'ProdukController@detail')->name('produk.detail');
     
     
@@ -47,11 +45,11 @@ Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kel
     Route::get('/berita/{berita}/{slug}', 'BeritaController@show')->name('berita.show');
     //Route::get('/berita/{berita}', function (){return abort(404);});
     Route::get('/gallery', 'GalleryController@gallery')->name('gallery');
-    Route::get('/buat-surat/{id}/{slug}', 'CetakSuratController@create')->name('buat-surat');
+    //Route::get('/buat-surat/{id}/{slug}', 'CetakSuratController@create')->name('buat-surat');
     //Route::get('/panduan', 'HomeController@panduan')->name('panduan');
     //Route::get('/statistik-penduduk', 'GrafikController@index')->name('statistik-penduduk');
     //Route::get('/statistik-penduduk/show', 'GrafikController@show')->name('statistik-penduduk.show');
-    Route::get('/anggaran-realisasi-cart', 'AnggaranRealisasiController@cart')->name('anggaran-realisasi.cart');
+    //Route::get('/anggaran-realisasi-cart', 'AnggaranRealisasiController@cart')->name('anggaran-realisasi.cart');
     //Route::post('/cetak-surat/{id}/{slug}', 'CetakSuratController@store')->name('cetak-surat.store');
 });
 
@@ -146,8 +144,8 @@ Route::group(['middleware' => ['web', 'auth','kelurahan']], function () {
         Route::get('/tambah-layanan', 'LayananController@create')->name('layanan.create');
         Route::resource('layanan', 'LayananController')->except('create','show');
     
-        Route::get('/tambah-tautan', 'TautanController@create')->name('tautan.create');
-        Route::resource('tautan', 'TautanController')->except('create','show');
+        // Route::get('/tambah-tautan', 'TautanController@create')->name('tautan.create');
+        // Route::resource('tautan', 'TautanController')->except('create','show');
     
         Route::get('/tambah-download', 'DownloadController@create')->name('download.create');
         Route::resource('download', 'DownloadController')->except('create','show');
@@ -188,6 +186,9 @@ Route::group(['middleware' => ['admin']], function () {
 
         Route::get('/tambah-data','adminController@dataCreate')->name('admin.tambah-data');
         Route::post('/tambah-data','adminController@dataStore');
+        Route::get('/dump-data','adminController@dump')->name('admin.dump');
+        Route::post('/dump-data','adminController@makeDump');
+        
     });
     
 });

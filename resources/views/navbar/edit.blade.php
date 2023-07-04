@@ -146,6 +146,11 @@
                             </select>
                             @error('target') <span class="invalid-feedback font-weight-bold">{{ $message }}</span> @enderror
                         </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Order Index</label>
+                            <input type="number" class="form-control @error('order') is-invalid @enderror" name="order" placeholder="Masukkan order index ..." value="{{ old('order',$navbar->order) }}">
+                            @error('order') <span class="invalid-feedback font-weight-bold">{{ $message }}</span> @enderror
+                        </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="1" id="enable" name="enable" checked>
                             <label class="form-check-label" for="enable">

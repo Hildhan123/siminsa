@@ -49,9 +49,9 @@
                     <li class="nav-item m-1">
                         <a class="nav-link tab {{ request('jenis') == 'laporan' ? 'active' : '' }}" href="{{ URL::current() }}?jenis=laporan&tahun={{ request('tahun') }}"><i class="fas fa-money-check-alt mr-2"></i>Laporan</a>
                     </li>
-                    <li class="nav-item m-1">
+                    {{-- <li class="nav-item m-1">
                         <a class="nav-link tab {{ request('jenis') == 'grafik' ? 'active' : '' }}" href="{{ URL::current() }}?jenis=grafik&tahun={{ request('tahun') }}"><i class="fas fa-chart-bar mr-2"></i>Grafik</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <form id="form-tahun" action="{{ URL::current()}}" method="GET">

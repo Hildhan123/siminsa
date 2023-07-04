@@ -10,8 +10,9 @@ class navbarController extends Controller
 {
     public function index()
     {
-        $navbar = $this->getTablebyUser('navbars');
-        return view('navbar.index', compact('navbar'));
+        $parent = DB::table('navbars')->where(['user_id' => Auth::user()->id,'parent' => null])->orderBy('order','asc')->get();
+        $child = DB::table('navbars')->where(['user_id' => Auth::user()->id])->whereNotNull('parent')->orderBy('parent','asc')->get();
+        return view('navbar.index', compact('parent','child'));
     }
     public function create()
     {
@@ -48,10 +49,14 @@ class navbarController extends Controller
             'modul'     => 'nullable|string',
             'target'    => 'nullable|string',
             'enable'    => 'numeric|nullable',
+            'order'     => 'numeric|nullable',
             // 'url'       => 'required'
         ]);
         if (!$request->enable) {
             $data['enable'] = 0;
+        }
+        if (!$request->order) {
+            $data['order'] = 0;
         }
 
         if($data['type'] == 1) {
@@ -86,9 +91,14 @@ class navbarController extends Controller
             'modul'     => 'nullable|string',
             'target'    => 'nullable|string',
             'enable'    => 'numeric|nullable',
+            'order'     => 'numeric|nullable',
+            // 'url'       => 'required'
         ]);
         if (!$request->enable) {
             $data['enable'] = 0;
+        }
+        if (!$request->order) {
+            $data['order'] = 0;
         }
 
         if($data['type'] == 1) {

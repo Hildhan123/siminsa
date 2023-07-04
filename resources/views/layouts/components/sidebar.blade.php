@@ -209,11 +209,10 @@
                     {{-- <i class="fas fa-images text-purple"></i> --}}
                     <span class="nav-link-inner--text">Kelola Layanan</span>
                 </a>
-                <a class="nav-link child @if (Request::segment(2) == 'tautan' || Request::segment(2) == 'tambah-tautan') active @endif"
+                {{-- <a class="nav-link child @if (Request::segment(2) == 'tautan' || Request::segment(2) == 'tambah-tautan') active @endif"
                     href="{{ route('tautan.index') }}">
-                    {{-- <i class="fas fa-images text-purple"></i> --}}
                     <span class="nav-link-inner--text">Kelola Tautan</span>
-                </a>
+                </a> --}}
                 <a class="nav-link child @if (Request::segment(2) == 'download' || Request::segment(2) == 'tambah-download') active @endif"
                     href="{{ route('download.index') }}">
                     {{-- <i class="fas fa-images text-purple"></i> --}}
@@ -258,3 +257,4 @@
         </ul>
     </div>
 </div>
+
