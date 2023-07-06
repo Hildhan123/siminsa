@@ -37,6 +37,17 @@ class adminController extends Controller
         $check = Hash::check($pass, $adm->password);
 
         if ($check == true) {
+            //save to log_activity
+            DB::table('log_activity')->insert([
+                'user_id'            => null,
+                'nama'               => $user,
+                'action'             => 'login',
+                'ip'                 => $request->ip(),
+                'browser_user_agent' => $request->userAgent(),
+                'created_at'         => date('Y-m-d H:i:s'),
+                'updated_at'         => date('Y-m-d H:i:s'),
+            ]);
+
             session(['hakAkses' => $user, 'id' => $adm->id]);
             return redirect()->route('admin.dashboard');
         }
@@ -48,7 +59,8 @@ class adminController extends Controller
         $admin = DB::table('admins')->where('id', $id)->first();
         $users = count(DB::table('users')->get());
         $kelurahan = count(DB::table('kelurahan')->get());
-        return view('admin.dashboard', compact('admin','users','kelurahan'));
+        $log = DB::table('log_activity')->whereNull('user_id')->get();
+        return view('admin.dashboard', compact('admin','users','kelurahan','log'));
     }
     public function users()
     {

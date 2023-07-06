@@ -50,7 +50,7 @@
         <div class="single-service bg-white rounded shadow container">
             <h4> Navbar Parent </h4>
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="parent" width="100%" cellspacing="0">
                     <thead align="center">
                         <tr>
                             <th>Order</th>
@@ -209,6 +209,7 @@
     <script>
         $(document).ready(function() {
             var table = $('#dataTable').DataTable();
+            var parent = $('#parent').DataTable();
             //$("#modal-hapus").modal()
             $('a[data-action]').on('click', function() {
                 var actionUrl = $(this).data('action'); // Mendapatkan URL aksi dari atribut data-action

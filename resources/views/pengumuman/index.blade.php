@@ -56,7 +56,7 @@
                             <th>No</th>
                             <th>Gambar</th>
                             <th>Judul</th>
-                            <th>Deskripsi</th>
+                            {{-- <th>Deskripsi</th> --}}
                             <th>Aksi</th>
 
                         </tr>
@@ -74,7 +74,7 @@
                                     @endif
                                 </td>
                                 <td data-title="Judul">{{ $index->judul }}</td>
-                                <td data-title="Deskripsi">{{ $index->konten }}</td>
+                                {{-- <td data-title="Deskripsi">{{ $index->konten }}</td> --}}
                                 <td data-title="Aksi" align="center">
                                     <a href="{{ Route('pengumuman.edit', ['pengumuman' => $index->id]) }}"><i
                                             class="fas fa-edit"></i></a> |

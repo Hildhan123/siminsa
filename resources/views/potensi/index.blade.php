@@ -56,7 +56,7 @@
                             <th>No</th>
                             <th>Gambar</th>
                             <th>Nama Potensi</th>
-                            <th>Deskripsi</th>
+                            {{-- <th>Deskripsi</th> --}}
                             <th>Aksi</th>
 
                         </tr>
@@ -74,7 +74,7 @@
                                     @endif
                                 </td>
                                 <td data-title="Nama Potensi">{{ $index->nama }}</td>
-                                <td data-title="Deskripsi">{{ $index->konten }}</td>
+                                {{-- <td data-title="Deskripsi">{{ $index->konten }}</td> --}}
                                 <td data-title="Aksi" align="center">
                                     <a href="{{ Route('potensi.edit', ['potensi' => $index->id]) }}"><i
                                             class="fas fa-edit"></i></a> |

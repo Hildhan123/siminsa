@@ -16,21 +16,21 @@ Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kel
     
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
-    Route::get('/organisasi/detail/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');
+    Route::get('/organisasi/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');
     Route::get('/perangkat-kelurahan', 'PegawaiController@show')->name('pegawai.show');
-    Route::get('/perangkat-kelurahan/detail/{pegawai}', 'PegawaiController@detail')->name('pegawai.detail');
+    Route::get('/perangkat-kelurahan/{pegawai}', 'PegawaiController@detail')->name('pegawai.detail');
     Route::get('/lembaga-kelurahan', 'LembagaController@show')->name('lembaga.show');
-    Route::get('/lembaga-kelurahan/detail/{lembaga}/{slug}', 'LembagaController@detail')->name('lembaga.detail');
+    Route::get('/lembaga-kelurahan/{lembaga}/{slug}', 'LembagaController@detail')->name('lembaga.detail');
     Route::get('/layanan-kelurahan', 'LayananController@show')->name('layanan.show');
-    Route::get('/layanan-kelurahan/detail/{layanan}/{slug}', 'LayananController@detail')->name('layanan.detail');
+    Route::get('/layanan-kelurahan/{layanan}/{slug}', 'LayananController@detail')->name('layanan.detail');
     Route::get('/pengumuman-kelurahan', 'PengumumanController@show')->name('pengumuman.show');
-    Route::get('/pengumuman-kelurahan/detail/{pengumuman}/{slug}', 'PengumumanController@detail')->name('pengumuman.detail');
+    Route::get('/pengumuman-kelurahan/{pengumuman}/{slug}', 'PengumumanController@detail')->name('pengumuman.detail');
     Route::get('/agenda-kelurahan', 'AgendaController@show')->name('agenda.show');
-    Route::get('/agenda-kelurahan/detail/{agenda}/{slug}', 'AgendaController@detail')->name('agenda.detail');
+    Route::get('/agenda-kelurahan/{agenda}/{slug}', 'AgendaController@detail')->name('agenda.detail');
     Route::get('/download-kelurahan', 'DownloadController@show')->name('download.show');
     //Route::get('/download-kelurahan/detail/1', 'DownloadController@detail')->name('download.detail');
     Route::get('/potensi-kelurahan', 'PotensiController@show')->name('potensi.show');
-    Route::get('/potensi-kelurahan/detail/{potensi}/{slug}', 'PotensiController@detail')->name('potensi.detail');
+    Route::get('/potensi-kelurahan/{potensi}/{slug}', 'PotensiController@detail')->name('potensi.detail');
     Route::get('/produk-kelurahan', 'ProdukController@show')->name('produk.show');
     //Route::get('/tautan-kelurahan', 'TautanController@show')->name('tautan.show');
     //Route::get('/produk-kelurahan/detail/{produk}/{slug}', 'ProdukController@detail')->name('produk.detail');
@@ -38,7 +38,7 @@ Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kel
     
     Route::get('/laporan-apbdes', 'AnggaranRealisasiController@laporan_apbdes')->name('laporan-apbdes');
     //Route::get('/layanan-surat', 'SuratController@layanan_surat')->name('layanan-surat');
-    Route::get('/p', 'PemerintahanDesaController@pemerintahan_desa')->name('pemerintahan-desa');
+    Route::get('/p', function (){return abort(404);})->name('pemerintahan-desa');
     Route::get('/p/{pemerintahan_desa}', function (){return abort(404);});
     Route::get('/p/{pemerintahan_desa}/{slug}', 'PemerintahanDesaController@show')->name('pemerintahan-desa.show');
     Route::get('/berita', 'BeritaController@berita')->name('berita');
@@ -58,8 +58,8 @@ Route::get('/', 'HomeController@index2')->name('home.index2');
 Route::group(['middleware' => ['web', 'guest']], function () {
     Route::get('/masuk', 'AuthController@index')->name('masuk');
     Route::post('/masuk', 'AuthController@masuk');
-    Route::get('/register', 'AuthController@register')->name('register');
-    Route::post('/register', 'AuthController@daftar');
+    // Route::get('/register', 'AuthController@register')->name('register');
+    // Route::post('/register', 'AuthController@daftar');
 });
 
 Route::group(['middleware' => ['web', 'auth','kelurahan']], function () {

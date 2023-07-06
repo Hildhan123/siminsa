@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home.index',['kelurahan_slug'=>$desa->slug]) }}">
+                <a class="nav-link" href="{{ route('home.index',['kelurahan_slug'=>$desa->slug]) }}" target="_blank">
                     <i class="fas fa-home text-blue"></i>
                     <span class="nav-link-inner--text">Beranda</span>
                 </a>
@@ -234,7 +234,7 @@
             <li class="nav-item">
                 <a class="nav-link @if (Request::segment(2) == 'profil-kelurahan') active @endif"
                     href="{{ route('profil-desa') }}">
-                    <i class="fas fa-users text-info"></i>
+                    <i class="fas fa-home text-yellow"></i>
                     <span class="nav-link-inner--text">Profil Desa</span>
                 </a>
             </li>

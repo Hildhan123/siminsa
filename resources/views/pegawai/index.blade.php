@@ -58,7 +58,7 @@
                             <th>Nama</th>
                             <th>NIP</th>
                             <th>Jabatan</th>
-                            <th>Deskripsi</th>
+                            {{-- <th>Deskripsi</th> --}}
                             <th>Aksi</th>
 
                         </tr>
@@ -78,7 +78,7 @@
                                 <td data-title="Nama">{{ $index->nama }}</td>
                                 <td data-title="NIP">{{ $index->nip }}</td>
                                 <td data-title="Jabatan">{{ $index->jabatan }}</td>
-                                <td data-title="Deskripsi">{{ $index->deskripsi }}</td>
+                                {{-- <td data-title="Deskripsi">{{ $index->deskripsi }}</td> --}}
                                 <td data-title="Aksi" align="center">
                                     <a href="{{ Route('pegawai.edit', ['pegawai' => $index->id]) }}"><i
                                             class="fas fa-edit"></i></a> |

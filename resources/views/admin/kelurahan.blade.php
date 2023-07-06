@@ -56,7 +56,10 @@
                             {{-- <th>Photo</th> --}}
                             <th>Nama User</th>
                             <th>Nama Kelurahan</th>
+                            <th>Alamat</th>
+                            <th>Kontak</th>
                             <th>Kodepos</th>
+                            <th>Link</th>
                             <th>Dibuat</th>
                             {{-- <th>Aksi</th> --}}
 
@@ -76,7 +79,10 @@
                                 </td> --}}
                                 <td data-title="Nama User">{{ $index->nama }}</td>
                                 <td data-title="Nama Kelurahan">{{ $index->nama_kelurahan }}</td>
+                                <td data-title="Alamat">{{ $index->alamat }}</td>
+                                <td data-title="Kontak">{{ $index->kontak }}</td>
                                 <td data-title="Kodepos">{{ $index->kodepos }}</td>
+                                <td data-title="Link"><a href="{{ route('home.index',['kelurahan_slug'=>$index->slug]) }}" target="_blank">{{ route('home.index',['kelurahan_slug'=>$index->slug]) }}</a></td>
                                 <td data-title="Dibuat">{{ $index->created_at }}</td>
                                 {{-- <td data-title="Aksi" align="center">
                                     <a href="{{ Route('admin.user', ['user' => $index->id]) }}"><i

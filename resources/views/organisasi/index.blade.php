@@ -57,7 +57,7 @@
                         <tr>
                             <th>Order Index</th>
                             <th>Title</th>
-                            <th>Deskripsi</th>
+                            {{-- <th>Deskripsi</th> --}}
                             <th>Pegawai/Perangkat Desa</th>
                             <th>Aksi</th>
 
@@ -68,7 +68,7 @@
                             <tr>
                                 <td data-title="Order Index">{{ $index->order }}</td>
                                 <td data-title="Title">{{ $index->title }}</td>
-                                <td data-title="Deskripsi">{!! $index->deskripsi !!}</td>
+                                {{-- <td data-title="Deskripsi">{!! $index->deskripsi !!}</td> --}}
                                 <td data-title="Pegawai">{{ $index->nama }}</td>
                                 <td data-title="Aksi" align="center">
                                     <a href="{{ Route('organisasi.edit', ['organisasi' => $index->id]) }}"><i

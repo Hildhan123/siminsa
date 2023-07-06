@@ -86,8 +86,9 @@ class HomeController extends Controller
         $download = count($this->getTablebyUser('downloads'));
         $produk = count($this->getTablebyUser('produks'));
         $potensi = count($this->getTablebyUser('potensis'));
+        $log = $this->getTablebyUser('log_activity');
         return view('dashboard',compact('organisasi','pegawai','lembaga','page','navbar','berita','galeri','pengumuman','agenda',
-    'layanan','download','produk','potensi'));
+    'layanan','download','produk','potensi','log'));
     }
 
     // public function suratHarian(Request $request)

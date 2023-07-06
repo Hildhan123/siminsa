@@ -57,7 +57,7 @@
                             <th>Gambar</th>
                             <th>Nama</th>
                             <th>Judul</th>
-                            <th>Konten</th>
+                            {{-- <th>Konten</th> --}}
                             <th>Aksi</th>
 
                         </tr>
@@ -76,7 +76,7 @@
                                 </td>
                                 <td data-title="Nama">{{ $index->nama }}</td>
                                 <td data-title="Judul">{{ $index->judul }}</td>
-                                <td data-title="Konten">{!! $index->konten !!}</td>
+                                {{-- <td data-title="Konten">{!! $index->konten !!}</td> --}}
                                 <td data-title="Aksi" align="center">
                                     <a href="{{ Route('layanan.edit', ['layanan' => $index->id]) }}"><i
                                             class="fas fa-edit"></i></a> |
