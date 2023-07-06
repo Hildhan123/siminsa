@@ -49,7 +49,7 @@ Profil Kelurahan
                         Kelurahan {{ $desa->nama_kelurahan }}
                     </h3>
                     <div class="h5 font-weight-300">
-                        Kec. {{ $desa->nama_kecamatan }}, Kab. {{ $desa->nama_kabupaten }}
+                        Kec. Demak, Kab. Demak
                     </div>
                 </div>
             </div>

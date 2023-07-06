@@ -73,31 +73,21 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $surat = null; //Surat::all();
-        $hari = 0;
-        $bulan = 0;
-        $tahun = 0;
-        $totalCetakSurat = 0;
-        $totalPenduduk = null; //new Penduduk();
-
-        // foreach ($surat as $value) {
-        //     if (count($value->cetakSurat) != 0) {
-        //         foreach ($value->cetakSurat as $cetakSurat) {
-        //             if (date('Y-m-d', strtotime($cetakSurat->created_at)) == date('Y-m-d')) {
-        //                 $hari = $hari + 1;
-        //             }
-        //             if (date('Y-m', strtotime($cetakSurat->created_at)) == date('Y-m')) {
-        //                 $bulan = $bulan + 1;
-        //             }
-        //             if (date('Y', strtotime($cetakSurat->created_at)) == date('Y')) {
-        //                 $tahun = $tahun + 1;
-        //             }
-        //             $totalCetakSurat = $totalCetakSurat + 1;
-        //         }
-        //     }
-        // }
-
-        return view('dashboard', compact('surat', 'hari', 'bulan', 'tahun', 'totalCetakSurat', 'totalPenduduk'));
+        $organisasi = count($this->getTablebyUser('organisasis'));
+        $pegawai = count($this->getTablebyUser('pegawais'));
+        $lembaga = count($this->getTablebyUser('lembagas'));
+        $page = count($this->getTablebyUser('pages'));
+        $navbar = count($this->getTablebyUser('navbars'));
+        $berita = count($this->getTablebyUser('berita'));
+        $galeri = count($this->getTablebyUser('galleries'));
+        $pengumuman = count($this->getTablebyUser('pengumumans'));
+        $agenda = count($this->getTablebyUser('agendas'));
+        $layanan = count($this->getTablebyUser('layanans'));
+        $download = count($this->getTablebyUser('downloads'));
+        $produk = count($this->getTablebyUser('produks'));
+        $potensi = count($this->getTablebyUser('potensis'));
+        return view('dashboard',compact('organisasi','pegawai','lembaga','page','navbar','berita','galeri','pengumuman','agenda',
+    'layanan','download','produk','potensi'));
     }
 
     // public function suratHarian(Request $request)

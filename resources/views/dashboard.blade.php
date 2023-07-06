@@ -18,29 +18,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Kepala Keluarga</h5>
-                                <span class="h2 font-weight-bold mb-0">0</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Struktur Organisasi</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$organisasi}}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
-                <div class="card card-stats shadow h-100">
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Total Penduduk</h5>
-                                <span class="h2 font-weight-bold mb-0">0</span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
                                     <i class="fas fa-users"></i>
                                 </div>
                             </div>
@@ -54,8 +36,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Laki-laki</h5>
-                                <span class="h2 font-weight-bold mb-0">0</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Perangkat Kelurahan</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$pegawai}}</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -72,7 +54,25 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Perempuan</h5>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Lembaga Kelurahan</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$lembaga}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                {{-- <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Perempuan</h5>
                                 <span class="h2 font-weight-bold mb-0">0</span>
                             </div>
                             <div class="col-auto">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
                 <div class="card card-stats shadow h-100">
@@ -90,12 +90,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Total Cetak Surat Hari Ini</h5>
-                                <span class="h2 font-weight-bold mb-0">{{ $hari }}</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Pages</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$page}}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                    <i class="fas fa-file-alt"></i>
+                                <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+                                    <i class="fas fa-atlas"></i>
                                 </div>
                             </div>
                         </div>
@@ -108,12 +108,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Total Cetak Surat Bulan Ini</h5>
-                                <span class="h2 font-weight-bold mb-0">{{ $bulan }}</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Navigasi</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$navbar}}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                    <i class="fas fa-file-alt"></i>
+                                <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+                                    <i class="fas fa-bars"></i>
                                 </div>
                             </div>
                         </div>
@@ -121,12 +121,12 @@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
-                <div class="card card-stats shadow h-100">
+                {{-- <div class="card card-stats shadow h-100">
                     <!-- Card body -->
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Total Cetak Surat Tahun Ini</h5>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Berita</h5>
                                 <span class="h2 font-weight-bold mb-0">{{ $tahun }}</span>
                             </div>
                             <div class="col-auto">
@@ -136,6 +136,42 @@
                             </div>
                         </div>
                     </div>
+                </div> --}}
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                {{-- <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Galeri</h5>
+                                <span class="h2 font-weight-bold mb-0">{{ $totalCetakSurat }}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Berita</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$berita}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
@@ -144,12 +180,120 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Total Cetak Surat</h5>
-                                <span class="h2 font-weight-bold mb-0">{{ $totalCetakSurat }}</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Galeri</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$galeri}}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                    <i class="fas fa-file-alt"></i>
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Pengumuman</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$pengumuman}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Agenda</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$agenda}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Layanan</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$layanan}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Download</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$download}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-file-download"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Produk</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$produk}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                <div class="card card-stats shadow h-100">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Potensi</h5>
+                                <span class="h2 font-weight-bold mb-0">{{$potensi}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-cyan text-white rounded-circle shadow">
+                                    <i class="fas fa-newspaper"></i>
                                 </div>
                             </div>
                         </div>

@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Total User</h5>
-                                <span class="h2 font-weight-bold mb-0">0</span>
+                                <span class="h2 font-weight-bold mb-0">{{$users}}</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Total Kelurahan</h5>
-                                <span class="h2 font-weight-bold mb-0">0</span>
+                                <span class="h2 font-weight-bold mb-0">{{$kelurahan}}</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">

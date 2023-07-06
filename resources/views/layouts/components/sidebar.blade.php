@@ -70,7 +70,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home.index',['kelurahan_slug'=>$desa->slug]) }}">
-                    <i class="fas fa-home text-cyan"></i>
+                    <i class="fas fa-home text-blue"></i>
                     <span class="nav-link-inner--text">Beranda</span>
                 </a>
             </li>

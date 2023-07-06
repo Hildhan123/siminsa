@@ -46,7 +46,9 @@ class adminController extends Controller
     {
         $id = session('id');
         $admin = DB::table('admins')->where('id', $id)->first();
-        return view('admin.dashboard', compact('admin'));
+        $users = count(DB::table('users')->get());
+        $kelurahan = count(DB::table('kelurahan')->get());
+        return view('admin.dashboard', compact('admin','users','kelurahan'));
     }
     public function users()
     {
