@@ -7,6 +7,7 @@ use DB;
 use Hash;
 use App\User;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class adminController extends Controller
 {
@@ -76,6 +77,31 @@ class adminController extends Controller
         $user = DB::table('users')->where('id', $user)->first();
         return view('admin.user', compact('admin', 'user'));
     }
+    public function userUpdate($user, Request $request)
+    {
+        //$user = DB::table('users')->where('id', $user)->first();
+        $data = $request->validate([
+            'nama' => 'required|string|max:64',
+            'email' => ['required','email',Rule::unique('users','email')->ignore($user)],
+            'password' => 'nullable|min:8|string|confirmed',
+        ]);
+
+        $data['updated_at'] = date('Y-m-d H:i:s');
+
+        if($data['password'])
+        {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        DB::table('users')->where('id',$user)->update($data);
+        return redirect()->route('admin.users')->with('success','User berhasil diupdate');
+    }
+    public function userDelete($user)
+    {
+        DB::table('users')->where('id',$user)->delete();
+        return redirect()->route('admin.users')->with('success','User berhasil dihapus');
+    }
     public function kelurahan()
     {
         $id = session('id');
@@ -94,8 +120,8 @@ class adminController extends Controller
     public function dataStore(Request $request)
     {
         $data = $request->validate([
-            'name' => 'string|required|max:255',
-            'email' => 'email|required',
+            'name' => 'string|required|max:64',
+            'email' => 'email|required|unique:users,email',
             'password' => 'required|min:8|string|confirmed',
             'nama_kelurahan' => 'required|string|max:20',
             'kodepos' => 'numeric|required|digits_between:5,10',
@@ -114,8 +140,6 @@ class adminController extends Controller
             'user_id' => $user->id,
             'slug' => Str::slug($data['nama_kelurahan']),
             'nama_kelurahan' => $data['nama_kelurahan'],
-            'nama_kecamatan' => 'Demak',
-            'nama_kabupaten' => 'Demak',
             'alamat' => $data['nama_kelurahan'],
             'kodepos' => $data['kodepos'],
             'kontak' => '08123456789',

@@ -46,7 +46,6 @@ Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kel
     //Route::get('/berita/{berita}', function (){return abort(404);});
     Route::get('/gallery', 'GalleryController@gallery')->name('gallery');
     //Route::get('/buat-surat/{id}/{slug}', 'CetakSuratController@create')->name('buat-surat');
-    //Route::get('/panduan', 'HomeController@panduan')->name('panduan');
     //Route::get('/statistik-penduduk', 'GrafikController@index')->name('statistik-penduduk');
     //Route::get('/statistik-penduduk/show', 'GrafikController@show')->name('statistik-penduduk.show');
     //Route::get('/anggaran-realisasi-cart', 'AnggaranRealisasiController@cart')->name('anggaran-realisasi.cart');
@@ -54,6 +53,7 @@ Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kel
 });
 
 Route::get('/', 'HomeController@index2')->name('home.index2');
+// Route::get('/panduan', 'HomeController@panduan')->name('panduan');
 
 Route::group(['middleware' => ['web', 'guest']], function () {
     Route::get('/masuk', 'AuthController@index')->name('masuk');
@@ -102,8 +102,8 @@ Route::group(['middleware' => ['web', 'auth','kelurahan']], function () {
         Route::get('/tambah-slider', 'GalleryController@create')->name('slider.create');
         Route::get('/slider', 'GalleryController@indexSlider')->name('slider.index');
     
-        Route::post('/video', 'VideoController@store')->name('video.store');
-        Route::patch('/video/update', 'VideoController@update')->name('video.update');
+        // Route::post('/video', 'VideoController@store')->name('video.store');
+        // Route::patch('/video/update', 'VideoController@update')->name('video.update');
     
         // Route::get('/surat-harian', 'HomeController@suratHarian')->name('surat-harian');
         // Route::get('/surat-bulanan', 'HomeController@suratBulanan')->name('surat-bulanan');

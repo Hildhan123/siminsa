@@ -16,14 +16,14 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 411,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 41,
-            'nama'                      => 'Hasil Usaha Desa'
+            'nama'                      => 'Hasil Usaha Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
             'id'                        => 412,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 41,
-            'nama'                      => 'Hasil Aset Desa'
+            'nama'                      => 'Hasil Aset Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
@@ -37,14 +37,14 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 414,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 41,
-            'nama'                      => 'Lain-Lain Pendapatan Asli Desa'
+            'nama'                      => 'Lain-Lain Pendapatan Asli Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
             'id'                        => 421,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 42,
-            'nama'                      => 'Dana Desa'
+            'nama'                      => 'Dana Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
@@ -58,7 +58,7 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 423,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 42,
-            'nama'                      => 'Alokasi Dana Desa'
+            'nama'                      => 'Alokasi Dana Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
@@ -79,7 +79,7 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 431,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 43,
-            'nama'                      => 'Penerimaan dari Hasil Kerjasama Antar Desa'
+            'nama'                      => 'Penerimaan dari Hasil Kerjasama Antar Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
@@ -93,7 +93,7 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 433,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 43,
-            'nama'                      => 'Penerimaan Bantuan dari Perusahaan yang Berlokasi di Desa'
+            'nama'                      => 'Penerimaan Bantuan dari Perusahaan yang Berlokasi di Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([
@@ -121,7 +121,7 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 439,
             'jenis_anggaran_id'         => 4,
             'kelompok_jenis_anggaran_id'=> 43,
-            'nama'                      => 'Lain-lain Pendapatan Desa Yang Sah'
+            'nama'                      => 'Lain-lain Pendapatan Kelurahan Yang Sah'
         ]);
 
         DetailJenisAnggaran::create([
@@ -172,7 +172,7 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 613,
             'jenis_anggaran_id'         => 6,
             'kelompok_jenis_anggaran_id'=> 61,
-            'nama'                      => 'Hasil Penjualan Kekayaan Desa Yang Dipisahkan'
+            'nama'                      => 'Hasil Penjualan Kekayaan Kelurahan Yang Dipisahkan'
         ]);
 
         DetailJenisAnggaran::create([
@@ -193,7 +193,7 @@ class DetailJenisAnggaranSeeder extends Seeder
             'id'                        => 622,
             'jenis_anggaran_id'         => 6,
             'kelompok_jenis_anggaran_id'=> 62,
-            'nama'                      => 'Penyertaan Modal Desa'
+            'nama'                      => 'Penyertaan Modal Kelurahan'
         ]);
 
         DetailJenisAnggaran::create([

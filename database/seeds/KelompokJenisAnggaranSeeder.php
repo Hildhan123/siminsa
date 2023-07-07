@@ -14,7 +14,7 @@ class KelompokJenisAnggaranSeeder extends Seeder
     {
         KelompokJenisAnggaran::create([
             'id'                => 41,
-            'nama'              => 'Pendapatan Asli Desa'
+            'nama'              => 'Pendapatan Asli Kelurahan'
         ]);
 
         KelompokJenisAnggaran::create([
@@ -29,12 +29,12 @@ class KelompokJenisAnggaranSeeder extends Seeder
 
         KelompokJenisAnggaran::create([
             'id'                => 51,
-            'nama'              => 'BIDANG PENYELENGGARAN PEMERINTAHAN DESA'
+            'nama'              => 'BIDANG PENYELENGGARAN PEMERINTAHAN KELURAHAN'
         ]);
 
         KelompokJenisAnggaran::create([
             'id'                => 52,
-            'nama'              => 'BIDANG PELAKSANAAN PEMBANGUNAN DESA'
+            'nama'              => 'BIDANG PELAKSANAAN PEMBANGUNAN KELURAHAN'
         ]);
 
         KelompokJenisAnggaran::create([
@@ -49,7 +49,7 @@ class KelompokJenisAnggaranSeeder extends Seeder
 
         KelompokJenisAnggaran::create([
             'id'                => 55,
-            'nama'              => 'BIDANG PENANGGULANGAN BENCANA, DARURAT DAN MENDESAK DESA'
+            'nama'              => 'BIDANG PENANGGULANGAN BENCANA, DARURAT DAN MENDESAK KELURAHAN'
         ]);
 
         KelompokJenisAnggaran::create([
