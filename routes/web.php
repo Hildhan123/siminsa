@@ -188,6 +188,9 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('/tambah-data','adminController@dataStore');
         Route::get('/dump-data','adminController@dump')->name('admin.dump');
         Route::post('/dump-data','adminController@makeDump');
+
+        Route::get('/profil','adminController@profil')->name('admin.profil');
+        Route::post('/profil','adminController@profilStore');
         
     });
     

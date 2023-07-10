@@ -19,7 +19,7 @@ class CreateLembagasTable extends Migration
             $table->string('logo')->nullable();
             $table->string('nama');
             $table->string('singkatan')->nullable();;
-            $table->string('dasar_hukum');
+            $table->string('dasar_hukum')->nullable();
             $table->string('alamat');
             $table->longText('profil')->nullable();
             $table->longText('visi_misi')->nullable();

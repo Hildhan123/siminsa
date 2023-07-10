@@ -208,8 +208,12 @@
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            var table = $('#dataTable').DataTable();
-            var parent = $('#parent').DataTable();
+            var table = $('#dataTable').DataTable({
+                'order': [[1, 'desc']]
+            });
+            var parent = $('#parent').DataTable({
+                
+            });
             //$("#modal-hapus").modal()
             $('a[data-action]').on('click', function() {
                 var actionUrl = $(this).data('action'); // Mendapatkan URL aksi dari atribut data-action

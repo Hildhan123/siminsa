@@ -426,4 +426,29 @@ class adminController extends Controller
 
         return redirect()->route('admin.dump')->with('success','Dump berhasil ditambahkan');
     }
+    public function profil()
+    {
+        $id = session('id');
+        $admin = DB::table('admins')->where('id', $id)->first();
+        return view('admin.profil',compact('admin'));
+    }
+    public function profilStore(Request $request)
+    {
+        $id = session('id');
+        $admin = DB::table('admins')->where('id', $id)->first();
+        $data = $request->validate([
+            'old_password' => 'required|string',
+            'password' => 'required|min:8|string|confirmed',       
+        ]);
+        //dump($admin->password, $request->old_password);
+        if (Hash::check($data['old_password'],$admin->password, ) == false) {
+            return redirect()->route('admin.profil')->with('error','Password lama salah');
+        }
+        DB::table('admins')->where('id',$id)->update([
+            'password' => Hash::make($data['password']),
+            "updated_at" => date('Y-m-d H:i:s'),
+        ]);
+
+        return redirect()->route('admin.profil')->with('success','Profil berhasil diperbarui');
+    }
 }

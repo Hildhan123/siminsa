@@ -22,7 +22,7 @@ class CreateNavbarsTable extends Migration
             $table->integer('type');//1 external 2 sitelink 3 page 4 modul
             $table->string('url');
             $table->string('target')->nullable();
-            $table->boolean('enable')->nullable();
+            $table->boolean('enable')->default(1);
             $table->timestamps();
         });
     }

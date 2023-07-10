@@ -18,7 +18,7 @@ class CreateAgendasTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('gambar')->nullable();
             $table->string('nama');
-            $table->string('lokasi');
+            $table->string('lokasi')->nullable();
             $table->string('tanggalDimulai');
             $table->string('tanggalBerakhir');
             $table->longText('detail')->nullable();

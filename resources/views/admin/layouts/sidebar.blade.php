@@ -110,7 +110,7 @@
         <hr class="my-3">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link @if (Request::segment(2) == 'profil' || Request::segment(2) == 'pengaturan') active @endif" href="#">
+                <a class="nav-link @if (Request::segment(2) == 'profil') active @endif" href="{{route('admin.profil')}}">
                     <i class="ni ni-single-02 text-yellow"></i>
                     <span class="nav-link-inner--text">Profil Saya</span>
                 </a>
