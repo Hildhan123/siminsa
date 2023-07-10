@@ -7,6 +7,43 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Tutorial install
+1. Clone project
+2. Install composer
+```terminal
+composer install
+```
+3. Buat file env
+Untuk gitbash atau linux
+```terminal
+cp .env.example .env
+```
+Untuk Windows
+```terminal
+copy .env.example .env
+```
+4. Generate key laravel
+```terminal
+php artisan key:generate
+```
+5. Buka file env lalu konfigurasikan database yang digunakan
+6. Lakukan migrate database
+```terminal
+php artisan migrate
+```
+8. Seed database
+```terminal
+php artisan db:seed
+```
+10. Storage link
+```terminal
+php artisan storage:link
+```
+11. Project siap digunakan. Untuk login super-user
+username : admin
+password : lol123LOL@
+
+<!-- 
 ## Cara Install Project DENGAN github desktop
 Untuk menginstal project ini anda harus memiliki Composer
 bagi yang belum install composer silahkan download [Klik di sini](https://getcomposer.org/download/1.9.0/composer.phar) tutorial cara instal composer [klik di sini](https://www.malasngoding.com/cara-install-composer/)
@@ -98,10 +135,10 @@ php artisan serve
 ```
 - Lalu ctrl+klik pada http://127.0.0.0:8000
 
-Login Admin http://127.0.0.0:8000/masuk <br>
+Login Admin http://127.0.0.0:8000/super-admin <br>
 email : admin@gmail.com <br>
 password : asdqwe123
-
+-->
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
