@@ -53,7 +53,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
             <div class="container">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="/{{$desa->slug }}">
                     <img src="{{ asset(Storage::url($desa->logo)) }}" width="50" height="50" alt="">
                     Kelurahan {{ $desa->nama_kelurahan }}
                 </a>
@@ -162,7 +162,6 @@
 
     <main role="main">
         @yield('content')
-
         <!-- FOOTER Copyright -->
         <footer class="py-5 bg-dark text-white">
             <div class="container">
@@ -194,7 +193,7 @@
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-left text-muted">
                             © {{ date('Y') }} <p class="">
-                                <a href="{{ url('') }}" class="font-weight-bold ml-1"
+                                <a href="/{{$desa->slug }}" class="font-weight-bold ml-1"
                                    >Kelurahan
                                     {{ $desa->nama_kelurahan }}</a>.
                             </p>

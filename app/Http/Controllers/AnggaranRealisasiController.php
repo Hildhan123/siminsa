@@ -55,7 +55,7 @@ class AnggaranRealisasiController extends Controller
         $data = $this->laporan2($request, $desa);
 
         if (!$request->tahun || !$request->jenis) {
-            return redirect('laporan-apbdes?jenis=laporan&tahun=' . date('Y'));
+            return redirect($desa->slug.'/laporan-apbdes?jenis=laporan&tahun=' . date('Y'));
         }
 
         if ($request->jenis == "laporan") {
@@ -63,7 +63,7 @@ class AnggaranRealisasiController extends Controller
         } elseif ($request->jenis == "grafik") {
             return view('anggaran-realisasi.grafik-apbdes-umum', compact('desa', 'detail_jenis_anggaran', 'data'));
         } else {
-            return redirect('laporan-apbdes?jenis=laporan&tahun=' . date('Y'));
+            return redirect($desa->slug.'/laporan-apbdes?jenis=laporan&tahun=' . date('Y'));
         }
 
     }

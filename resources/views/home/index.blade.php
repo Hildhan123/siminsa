@@ -3,6 +3,7 @@
 @section('title', 'Selamat Datang di Kelurahan ' . $desa->nama_kelurahan)
 
 @section('content')
+
     @include('home.layouts.slider')
     <div class="container">
         <div class="row">
@@ -22,7 +23,7 @@
                     </ul>
                     <hr>
                     <div class=""> <img
-                            src="http://sumberejo-mranggen.desa.id/themes/landrick/layouts/images/illustrator/faq.svg"
+                            src="{{ asset('storage/faq.svg') }}"
                             alt=""> </div>
                 </div>
             </div>

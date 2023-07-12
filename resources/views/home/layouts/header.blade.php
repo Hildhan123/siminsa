@@ -17,7 +17,7 @@
             <li class="breadcrumb-item active">Produk Hukum</li>
         </ul> --}}
         <ul class="breadcrumb bg-white rounded shadow mb-0">
-            <li class="breadcrumb-item"><a href="/"><i
+            <li class="breadcrumb-item"><a href="/{{$desa->slug}}"><i
                 class="fas fa-home"></i></a></li>
             @foreach (Request::segments() as $segment)
                 @php

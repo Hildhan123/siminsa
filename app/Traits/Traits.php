@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Traits;
+
 use Auth;
 use DB;
 
@@ -16,18 +17,18 @@ trait Traits
 
     public function getTablebyUser($table)
     {
-        $data = DB::table($table)->where('user_id',Auth::user()->id)->latest()->get();
+        $data = DB::table($table)->where('user_id', Auth::user()->id)->latest()->get();
         return $data;
     }
     public function getTablebyDesa($table)
     {
         $desa = app('desa');
-        $data = DB::table($table)->where('user_id',$desa->user_id)->latest()->get();
+        $data = DB::table($table)->where('user_id', $desa->user_id)->latest()->get();
         return $data;
     }
-    public function firstTablebyId($table,$id)
+    public function firstTablebyId($table, $id)
     {
-        $data = DB::table($table)->where('id',$id)->first();
+        $data = DB::table($table)->where('id', $id)->first();
         return $data;
     }
     public function createRowbyUser($table, $data)
@@ -38,14 +39,14 @@ trait Traits
         $data = DB::table($table)->insert($data);
         return $data;
     }
-    public function updateRowbyUser($table,$id,$data)
+    public function updateRowbyUser($table, $id, $data)
     {
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $data = DB::table($table)->where('id',$id)->update($data);
+        $data = DB::table($table)->where('id', $id)->update($data);
         return $data;
     }
 
-    public function gambarPath($raw,$folder)
+    public function gambarPath($raw, $folder)
     {
         $file = $raw;
         $id = Auth::user()->id;
@@ -60,30 +61,34 @@ trait Traits
     {
         $desa = app('desa');
         $parentMenus = DB::table('navbars')
-                ->where([
-                    ['enable','=', 1],
-                    ['user_id','=',$desa->user_id]
-                    ])
-                ->whereNull('parent')
-                ->orderBy('order', 'asc')
-                ->get();
-    
-            $menuItems = [];
-            foreach ($parentMenus as $parentMenu) {
-                $menu = [
-                    'parent' => $parentMenu,
-                    'children' => DB::table('navbars')
-                        ->where([
-                            ['parent','=', $parentMenu->id],
-                            ['user_id','=',$desa->user_id],
-                            ['enable','=', 1]
-                            ])
-                        ->orderBy('order', 'asc')
-                        ->get(),
-                ];
-                $menuItems[] = $menu;
-            }
+            ->where([
+                ['enable', '=', 1],
+                ['user_id', '=', $desa->user_id]
+            ])
+            ->whereNull('parent')
+            ->orderBy('order', 'asc')
+            ->get();
 
+        $menuItems = [];
+        foreach ($parentMenus as $parentMenu) {
+            $menu = [
+                'parent' => $parentMenu,
+                'children' => DB::table('navbars')
+                    ->where([
+                        ['parent', '=', $parentMenu->id],
+                        ['user_id', '=', $desa->user_id],
+                        ['enable', '=', 1]
+                    ])
+                    ->orderBy('order', 'asc')
+                    ->get(),
+            ];
+            // Tambahkan $desa->slug ke URL pada setiap item menu
+            $menu['parent']->url = '/' . $desa->slug . $menu['parent']->url;
+            foreach ($menu['children'] as $child) {
+                $child->url = '/' . $desa->slug . $child->url;
+            }
+            $menuItems[] = $menu;
+        }
         return $menuItems;
     }
 }
