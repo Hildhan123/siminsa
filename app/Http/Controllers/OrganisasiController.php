@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Gallery;
-use File;
 use Auth;
 
 class OrganisasiController extends Controller
@@ -42,7 +41,7 @@ class OrganisasiController extends Controller
             'title' => 'required|string|max:100',
             'deskripsi' => 'nullable',
             'pegawai_id' => 'required',
-            'order' => 'numeric|required|',
+            'order' => ['numeric', 'required', ],
         ]);
         $this->createRowbyUser('organisasis', $data);
         DB::table('pegawais')->where('id', $data['pegawai_id'])->update([
@@ -57,10 +56,10 @@ class OrganisasiController extends Controller
             'title' => 'required|string|max:100',
             'deskripsi' => 'nullable',
             'pegawai_id' => 'required',
-            'order' => 'numeric|required|',
+            'order' => ['numeric', 'required',],
         ]);
 
-        $this->updateRowbyUser('organisasis', $organisasi);
+        $this->updateRowbyUser('organisasis', $organisasi,$data);
         DB::table('pegawais')->where('id', $data['pegawai_id'])->update([
             'jabatan' => $data['title'],
         ]);

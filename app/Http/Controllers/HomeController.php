@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->select('*', 'organisasis.id as id')
             ->get();
 
-        foreach (Gallery::where(['slider' => null, 'organisasi' => null,'user_id' => $desa->user_id])->get() as $key => $value) {
+        foreach (Gallery::where(['slider' => null, 'organisasi' => null,'user_id' => $desa->user_id])->latest()->get() as $key => $value) {
             $gambar = [
                 'gambar' => $value->gallery,
                 'id' => $value->id,

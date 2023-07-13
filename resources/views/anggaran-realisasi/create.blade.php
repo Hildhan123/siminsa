@@ -102,7 +102,7 @@
 <script>
     $(document).ready(function () {
         if ($("#jenis_anggaran") != "") {
-            var baseURL = "http://localhost:8000/admin";
+            var baseURL = "{{ env('APP_URL') }}/admin";
             $.getJSON(baseURL + "/detail-jenis-anggaran/" + $("#jenis_anggaran").val(), function (response) {
                 $("#detail_jenis_anggaran_id").html(`<option value="" selected disabled>Pilih Detail Jenis Anggaran</option>`);
                 $.each(response, function(key, item) {

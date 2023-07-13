@@ -29,7 +29,7 @@
     </title>
 
     <!-- Favicon -->
-    <link href="{{asset('storage/kominfo.png')}}" rel="icon" type="image/png">
+    <link href="{{asset('storage/logo.png')}}" rel="icon" type="image/png">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -71,13 +71,9 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-                                <a href="{{ route('profil') }}" class="dropdown-item">
+                                <a href="{{ route('admin.profil') }}" class="dropdown-item">
                                     <i class="ni ni-single-02"></i>
                                     <span>Profil Saya</span>
-                                </a>
-                                <a href="{{ route('pengaturan') }}" class="dropdown-item">
-                                    <i class="ni ni-settings-gear-65"></i>
-                                    <span>Pengaturan</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('form-keluar').submit();">
@@ -113,9 +109,7 @@
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-right text-muted">
                             Powered By <a href="#" class="font-weight-bold ml-1"
-                                target="_blank">Kementerian
-                                Komunikasi dan Informatika
-                                RI</a>
+                                target="_blank">Dinas Komunikasi dan Informatika Kabupaten Demak</a>
                         </div>
                     </div>
                 </div>

@@ -89,7 +89,7 @@
                                 @endforeach
                                 <li
                                     class="nav-item dropdown {{ $isActive ? 'active' : ''}}">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a class="nav-link dropdown-toggle" href="{{$menu['parent']->url}}" role="button"
                                         data-toggle="dropdown" aria-expanded="false">
                                         {{ $menu['parent']->title }}
                                     </a>
@@ -201,9 +201,7 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-right text-muted">
-                            Powered By <a href="#" class="font-weight-bold ml-1">Kementerian
-                                Komunikasi dan Informatika
-                                RI</a>
+                            Powered By <a href="#" class="font-weight-bold ml-1">Dinas Komunikasi dan Informatika Kabupaten Demak</a>
                         </div>
                     </div>
                 </div>

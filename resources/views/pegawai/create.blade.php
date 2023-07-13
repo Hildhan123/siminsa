@@ -61,10 +61,13 @@
                                 <img onclick="$(this).siblings('.images').click()" class="mw-100 upload-image"
                                     style="max-height: 300px" src="{{ asset('storage/upload.jpg') }}" alt="">
                                 <input accept="image/*" onchange="uploadImage(this)" type="file" name="photo"
-                                    class="images" style="display: none">
+                                    class="images @error('photo') is-invalid @enderror" style="display: none">
                             </div>
                         </div>
                         <div class="form-group">
+                            @error('photo')
+                                <span class="invalid-feedback font-weight-bold">{{ $message }}</span>
+                            @enderror
                             <label class="form-control-label">Nama</label>
                             <input class="form-control @error('nama') is-invalid @enderror" name="nama"
                                 placeholder="Masukkan nama ..." value="{{ old('nama') }}">

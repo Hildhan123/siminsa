@@ -70,7 +70,7 @@ Profil Admin
             <div class="card-body">
                 @include('layouts.components.alert')
                 <form action="{{ route('admin.profil')}}" method="POST">
-                    @csrf
+                    @csrf 
                     <h6 class="heading-small text-muted mb-4">Informasi Pengguna</h6>
                     <div class="pl-lg-4">
                         <div class="form-group">
@@ -129,35 +129,7 @@ Profil Admin
             $(this).children("button:submit").html(`<img height="20px" src="{{ url('/storage/loading.gif') }}" alt=""> Loading ...`);
         });
 
-        $('#input-foto_profil').on('change', function () {
-            if (this.files && this.files[0]) {
-                let formData = new FormData();
-                let oFReader = new FileReader();
-                formData.append("foto_profil", this.files[0]);
-                formData.append("_method", "patch");
-                formData.append("_token", "{{ csrf_token() }}");
-                oFReader.readAsDataURL(this.files[0]);
-
-                $.ajax({
-                    url: "{{ route('update-profil', auth()->user()) }}",
-                    type: 'POST',
-                    data: formData,
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $('#img-foto_profil').attr('src', "{{ url('/storage/loading.gif') }}");
-                    },
-                    success: function (data) {
-                        if (data.error) {
-                            $('#img-foto_profil').attr('src', $("#img-foto_profil").attr('alt'));
-                        } else {
-                            location.reload();
-                        }
-                    }
-                });
-            }
-        });
+       
     });
 </script>
 @endpush

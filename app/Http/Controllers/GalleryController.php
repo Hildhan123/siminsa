@@ -24,7 +24,7 @@ class GalleryController extends Controller
             ['organisasi', '=', null],
             ['lembaga_id', '=', null],
             ['user_id','=',Auth::user()->id]
-        ])->get();
+        ])->latest()->get();
         $videos = Video::where('user_id',Auth::user()->id);
         $galleries = array();
 

@@ -26,7 +26,7 @@
                                 <p class="mb-0 text-sm">Kelola Gallery Kelurahan</p>
                             </div>
                             <div class="mb-3">
-                                <a href="#video-modal" data-toggle="modal" class="btn btn-primary"><i class="fas fa-video mr-2"></i> Pengaturan Video</a>
+                                {{-- <a href="#video-modal" data-toggle="modal" class="btn btn-primary"><i class="fas fa-video mr-2"></i> Pengaturan Video</a> --}}
                                 <a href="#tambah-gambar" data-toggle="modal" class="btn btn-primary"><i class="fas fa-image mr-2"></i> Tambah Gambar</a>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
     </div>
     <div class="modal-dialog modal-dialog-centered modal-" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            {{-- <div class="modal-header">
                 <h6 class="modal-title" id="modal-title-delete">Pengaturan Video</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -98,7 +98,7 @@
                     <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> Sync</button>
                 </form>
                 <button type="button" class="btn btn-white" data-dismiss="modal">Batal</button>
-            </div>
+            </div> --}}
 
         </div>
     </div>

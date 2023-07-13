@@ -2,6 +2,11 @@
 
 @section('title', 'Selamat Datang di Kelurahan ' . $desa->nama_kelurahan)
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endsection
+
 @section('content')
 
     @include('home.layouts.slider')
@@ -210,3 +215,6 @@
     @endif
 
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
+@endpush

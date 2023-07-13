@@ -89,15 +89,15 @@
             </a>
             <li class="nav-item" id="collapseOne" class="collapse" aria-labelledby="headingOne"
                 data-parent="#accordionExample">
-                <a class="nav-link child @if (Request::segment(2) == 'organisasi' || Request::segment(2) == 'tambah-organisasi') active @endif"
-                    href="{{ route('organisasi.index') }}">
-                    {{-- <i class="fas fa-users text-info"></i> --}}
-                    <span class="nav-link-inner--text">Struktur Organisasi</span>
-                </a>
                 <a class="nav-link child @if (Request::segment(2) == 'pegawai' || Request::segment(2) == 'tambah-pegawai') active @endif"
                     href="{{ route('pegawai.index') }}">
                     {{-- <i class="fas fa-users text-info"></i> --}}
                     <span class="nav-link-inner--text">Perangkat Desa</span>
+                </a>
+                <a class="nav-link child @if (Request::segment(2) == 'organisasi' || Request::segment(2) == 'tambah-organisasi') active @endif"
+                    href="{{ route('organisasi.index') }}">
+                    {{-- <i class="fas fa-users text-info"></i> --}}
+                    <span class="nav-link-inner--text">Struktur Organisasi</span>
                 </a>
                 <a class="nav-link child @if (Request::segment(2) == 'lembaga' || Request::segment(2) == 'tambah-lembaga') active @endif"
                     href="{{ route('lembaga.index') }}">

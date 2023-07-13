@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="carousel-caption text-left">
                         {{-- <h1>Example headline.</h1> --}}
-                        <p>{{ $slider->caption }}</p>
+                        <p class="bg-dark" style="opacity: 70%">{{ $slider->caption }}</p>
                     </div>
                 </div>
             </div>

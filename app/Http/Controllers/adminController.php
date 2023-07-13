@@ -60,7 +60,7 @@ class adminController extends Controller
         $admin = DB::table('admins')->where('id', $id)->first();
         $users = count(DB::table('users')->get());
         $kelurahan = count(DB::table('kelurahan')->get());
-        $log = DB::table('log_activity')->whereNull('user_id')->get();
+        $log = DB::table('log_activity')->whereNull('user_id')->latest()->get();
         return view('admin.dashboard', compact('admin','users','kelurahan','log'));
     }
     public function users()
@@ -126,6 +126,11 @@ class adminController extends Controller
             'nama_kelurahan' => 'required|string|max:20',
             'kodepos' => 'numeric|required|digits_between:5,10',
         ]);
+
+        $data['slug'] = Str::slug($data['nama_kelurahan']);
+        if (DB::table('kelurahan')->where('slug', $data['slug'])->exists()) {
+            return back()->withErrors(['nama_kelurahan' => 'Nama kelurahan sudah ada di database'])->withInput();
+        }
 
         $user = User::create([
             'nama' => $data['name'],

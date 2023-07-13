@@ -16,7 +16,7 @@ class CreateOrganisasisTable extends Migration
         Schema::create('organisasis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('order')->unique();
+            $table->integer('order');
             //$table->foreignId('kelurahan_id')->constrained('kelurahan')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
             $table->longText('deskripsi')->nullable();
