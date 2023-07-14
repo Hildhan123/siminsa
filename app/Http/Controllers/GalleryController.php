@@ -70,7 +70,7 @@ class GalleryController extends Controller
             ['organisasi', '=', null],
             ['lembaga_id', '=', null],
             ['user_id','=',$desa->user_id]
-        ])->get();
+        ])->latest()->get();
         $videos = Video::where('user_id',$desa->user_id);
         $galleries = array();
 
