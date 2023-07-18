@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::group(['domain' => '{kelurahan_slug}.demo.demakkab.go.id', 'middleware' => 'get.kelurahan'], function () {
+// Route::group(['domain' => '{kelurahan_slug}.localhost', 'middleware' => 'get.kelurahan'], function () {
     
 //     Route::get('/', 'HomeController@index')->name('home.index');
 //     Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
@@ -53,8 +53,60 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/', 'HomeController@index2')->name('home.index2');
+// Route::get('/', 'HomeController@index2')->name('home.index2');
 // Route::get('/panduan', 'HomeController@panduan')->name('panduan');
+
+Route::group(['middleware' => []], function () {
+        // Ambil data Desa/Kelurahan berdasarkan 'nama'
+        $desa = DB::table('kelurahan')->find(1);
+
+        if ($desa) {
+            // Bagikan data 'desa' ke semua controller
+            app()->instance('desa', $desa);
+            app()->instance('kelurahan', $desa);
+
+            View::share('desa', $desa);
+        } else {
+            return abort(404);
+        }
+
+    Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
+    Route::get('/organisasi/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');
+    Route::get('/perangkat-kelurahan', 'PegawaiController@show')->name('pegawai.show');
+    Route::get('/perangkat-kelurahan/{pegawai}', 'PegawaiController@detail')->name('pegawai.detail');
+    Route::get('/lembaga-kelurahan', 'LembagaController@show')->name('lembaga.show');
+    Route::get('/lembaga-kelurahan/{lembaga}/{slug}', 'LembagaController@detail')->name('lembaga.detail');
+    Route::get('/layanan-kelurahan', 'LayananController@show')->name('layanan.show');
+    Route::get('/layanan-kelurahan/{layanan}/{slug}', 'LayananController@detail')->name('layanan.detail');
+    Route::get('/pengumuman-kelurahan', 'PengumumanController@show')->name('pengumuman.show');
+    Route::get('/pengumuman-kelurahan/{pengumuman}/{slug}', 'PengumumanController@detail')->name('pengumuman.detail');
+    Route::get('/agenda-kelurahan', 'AgendaController@show')->name('agenda.show');
+    Route::get('/agenda-kelurahan/{agenda}/{slug}', 'AgendaController@detail')->name('agenda.detail');
+    Route::get('/download-kelurahan', 'DownloadController@show')->name('download.show');
+    //Route::get('/download-kelurahan/detail/1', 'DownloadController@detail')->name('download.detail');
+    Route::get('/potensi-kelurahan', 'PotensiController@show')->name('potensi.show');
+    Route::get('/potensi-kelurahan/{potensi}/{slug}', 'PotensiController@detail')->name('potensi.detail');
+    Route::get('/produk-kelurahan', 'ProdukController@show')->name('produk.show');
+    //Route::get('/tautan-kelurahan', 'TautanController@show')->name('tautan.show');
+    //Route::get('/produk-kelurahan/detail/{produk}/{slug}', 'ProdukController@detail')->name('produk.detail');
+    
+    
+    Route::get('/laporan-apbdes', 'AnggaranRealisasiController@laporan_apbdes')->name('laporan-apbdes');
+    //Route::get('/layanan-surat', 'SuratController@layanan_surat')->name('layanan-surat');
+    Route::get('/p', function (){return abort(404);})->name('pemerintahan-desa');
+    Route::get('/p/{pemerintahan_desa}', function (){return abort(404);});
+    Route::get('/p/{pemerintahan_desa}/{slug}', 'PemerintahanDesaController@show')->name('pemerintahan-desa.show');
+    Route::get('/berita', 'BeritaController@berita')->name('berita');
+    Route::get('/berita/{berita}/{slug}', 'BeritaController@show')->name('berita.show');
+    //Route::get('/berita/{berita}', function (){return abort(404);});
+    Route::get('/gallery', 'GalleryController@gallery')->name('gallery');
+    //Route::get('/buat-surat/{id}/{slug}', 'CetakSuratController@create')->name('buat-surat');
+    //Route::get('/statistik-penduduk', 'GrafikController@index')->name('statistik-penduduk');
+    //Route::get('/statistik-penduduk/show', 'GrafikController@show')->name('statistik-penduduk.show');
+    //Route::get('/anggaran-realisasi-cart', 'AnggaranRealisasiController@cart')->name('anggaran-realisasi.cart');
+    //Route::post('/cetak-surat/{id}/{slug}', 'CetakSuratController@store')->name('cetak-surat.store');
+});
 
 Route::group(['middleware' => ['web', 'guest']], function () {
     Route::get('/masuk', 'AuthController@index')->name('masuk');
@@ -198,46 +250,46 @@ Route::group(['middleware' => ['admin']], function () {
     
 });
 
-Route::group(['middleware' => []], function () {
-    Route::prefix('{kelurahan_slug}')->middleware(['get.kelurahan'])->group(function () {
-        Route::get('/', 'HomeController@index')->name('home.index');
-        Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
-        Route::get('/organisasi/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');
-        Route::get('/perangkat-kelurahan', 'PegawaiController@show')->name('pegawai.show');
-        Route::get('/perangkat-kelurahan/{pegawai}', 'PegawaiController@detail')->name('pegawai.detail');
-        Route::get('/lembaga-kelurahan', 'LembagaController@show')->name('lembaga.show');
-        Route::get('/lembaga-kelurahan/{lembaga}/{slug}', 'LembagaController@detail')->name('lembaga.detail');
-        Route::get('/layanan-kelurahan', 'LayananController@show')->name('layanan.show');
-        Route::get('/layanan-kelurahan/{layanan}/{slug}', 'LayananController@detail')->name('layanan.detail');
-        Route::get('/pengumuman-kelurahan', 'PengumumanController@show')->name('pengumuman.show');
-        Route::get('/pengumuman-kelurahan/{pengumuman}/{slug}', 'PengumumanController@detail')->name('pengumuman.detail');
-        Route::get('/agenda-kelurahan', 'AgendaController@show')->name('agenda.show');
-        Route::get('/agenda-kelurahan/{agenda}/{slug}', 'AgendaController@detail')->name('agenda.detail');
-        Route::get('/download-kelurahan', 'DownloadController@show')->name('download.show');
-        //Route::get('/download-kelurahan/detail/1', 'DownloadController@detail')->name('download.detail');
-        Route::get('/potensi-kelurahan', 'PotensiController@show')->name('potensi.show');
-        Route::get('/potensi-kelurahan/{potensi}/{slug}', 'PotensiController@detail')->name('potensi.detail');
-        Route::get('/produk-kelurahan', 'ProdukController@show')->name('produk.show');
-        //Route::get('/tautan-kelurahan', 'TautanController@show')->name('tautan.show');
-        //Route::get('/produk-kelurahan/detail/{produk}/{slug}', 'ProdukController@detail')->name('produk.detail');
+// Route::group(['middleware' => []], function () {
+//     Route::prefix('{kelurahan_slug}')->middleware(['get.kelurahan'])->group(function () {
+//         Route::get('/', 'HomeController@index')->name('home.index');
+//         Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
+//         Route::get('/organisasi/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');
+//         Route::get('/perangkat-kelurahan', 'PegawaiController@show')->name('pegawai.show');
+//         Route::get('/perangkat-kelurahan/{pegawai}', 'PegawaiController@detail')->name('pegawai.detail');
+//         Route::get('/lembaga-kelurahan', 'LembagaController@show')->name('lembaga.show');
+//         Route::get('/lembaga-kelurahan/{lembaga}/{slug}', 'LembagaController@detail')->name('lembaga.detail');
+//         Route::get('/layanan-kelurahan', 'LayananController@show')->name('layanan.show');
+//         Route::get('/layanan-kelurahan/{layanan}/{slug}', 'LayananController@detail')->name('layanan.detail');
+//         Route::get('/pengumuman-kelurahan', 'PengumumanController@show')->name('pengumuman.show');
+//         Route::get('/pengumuman-kelurahan/{pengumuman}/{slug}', 'PengumumanController@detail')->name('pengumuman.detail');
+//         Route::get('/agenda-kelurahan', 'AgendaController@show')->name('agenda.show');
+//         Route::get('/agenda-kelurahan/{agenda}/{slug}', 'AgendaController@detail')->name('agenda.detail');
+//         Route::get('/download-kelurahan', 'DownloadController@show')->name('download.show');
+//         //Route::get('/download-kelurahan/detail/1', 'DownloadController@detail')->name('download.detail');
+//         Route::get('/potensi-kelurahan', 'PotensiController@show')->name('potensi.show');
+//         Route::get('/potensi-kelurahan/{potensi}/{slug}', 'PotensiController@detail')->name('potensi.detail');
+//         Route::get('/produk-kelurahan', 'ProdukController@show')->name('produk.show');
+//         //Route::get('/tautan-kelurahan', 'TautanController@show')->name('tautan.show');
+//         //Route::get('/produk-kelurahan/detail/{produk}/{slug}', 'ProdukController@detail')->name('produk.detail');
         
         
-        Route::get('/laporan-apbdes', 'AnggaranRealisasiController@laporan_apbdes')->name('laporan-apbdes');
-        //Route::get('/layanan-surat', 'SuratController@layanan_surat')->name('layanan-surat');
-        Route::get('/p', function (){return abort(404);})->name('pemerintahan-desa');
-        Route::get('/p/{pemerintahan_desa}', function (){return abort(404);});
-        Route::get('/p/{pemerintahan_desa}/{slug}', 'PemerintahanDesaController@show')->name('pemerintahan-desa.show');
-        Route::get('/berita', 'BeritaController@berita')->name('berita');
-        Route::get('/berita/{berita}/{slug}', 'BeritaController@show')->name('berita.show');
-        //Route::get('/berita/{berita}', function (){return abort(404);});
-        Route::get('/gallery', 'GalleryController@gallery')->name('gallery');
-        //Route::get('/buat-surat/{id}/{slug}', 'CetakSuratController@create')->name('buat-surat');
-        //Route::get('/statistik-penduduk', 'GrafikController@index')->name('statistik-penduduk');
-        //Route::get('/statistik-penduduk/show', 'GrafikController@show')->name('statistik-penduduk.show');
-        //Route::get('/anggaran-realisasi-cart', 'AnggaranRealisasiController@cart')->name('anggaran-realisasi.cart');
-        //Route::post('/cetak-surat/{id}/{slug}', 'CetakSuratController@store')->name('cetak-surat.store');
-});
-});
+//         Route::get('/laporan-apbdes', 'AnggaranRealisasiController@laporan_apbdes')->name('laporan-apbdes');
+//         //Route::get('/layanan-surat', 'SuratController@layanan_surat')->name('layanan-surat');
+//         Route::get('/p', function (){return abort(404);})->name('pemerintahan-desa');
+//         Route::get('/p/{pemerintahan_desa}', function (){return abort(404);});
+//         Route::get('/p/{pemerintahan_desa}/{slug}', 'PemerintahanDesaController@show')->name('pemerintahan-desa.show');
+//         Route::get('/berita', 'BeritaController@berita')->name('berita');
+//         Route::get('/berita/{berita}/{slug}', 'BeritaController@show')->name('berita.show');
+//         //Route::get('/berita/{berita}', function (){return abort(404);});
+//         Route::get('/gallery', 'GalleryController@gallery')->name('gallery');
+//         //Route::get('/buat-surat/{id}/{slug}', 'CetakSuratController@create')->name('buat-surat');
+//         //Route::get('/statistik-penduduk', 'GrafikController@index')->name('statistik-penduduk');
+//         //Route::get('/statistik-penduduk/show', 'GrafikController@show')->name('statistik-penduduk.show');
+//         //Route::get('/anggaran-realisasi-cart', 'AnggaranRealisasiController@cart')->name('anggaran-realisasi.cart');
+//         //Route::post('/cetak-surat/{id}/{slug}', 'CetakSuratController@store')->name('cetak-surat.store');
+// });
+// });
 
 Route::fallback(function () {
     abort(404);

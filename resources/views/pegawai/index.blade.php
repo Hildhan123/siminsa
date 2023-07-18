@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Perangkat Kelurahan')
+@section('title', 'Pegawai')
 
 @section('styles')
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
@@ -27,8 +27,8 @@
                             <div
                                 class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between text-center text-md-left">
                                 <div class="mb-3">
-                                    <h2 class="mb-0">Perangkat Desa</h2>
-                                    <p class="mb-0 text-sm">Kelola Perangkat Desa</p>
+                                    <h2 class="mb-0">Pegawai</h2>
+                                    <p class="mb-0 text-sm">Kelola Pegawai</p>
                                 </div>
                                 <div class="mb-3">
                                     <a href="{{ route('pegawai.create') }}" class="btn btn-success" title="Tambah"><i
@@ -108,7 +108,7 @@
             <div class="modal-content bg-gradient-danger">
 
                 <div class="modal-header">
-                    <h6 class="modal-title" id="modal-title-delete">Hapus Perangkat Desa?</h6>
+                    <h6 class="modal-title" id="modal-title-delete">Hapus Pegawai?</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -119,7 +119,7 @@
                     <div class="py-3 text-center">
                         <i class="ni ni-bell-55 ni-3x"></i>
                         <h4 class="heading mt-4">Perhatian!!</h4>
-                        <p>Menghapus perangkat desa akan menghapus semua data yang dimilikinya</p>
+                        <p>Menghapus Pegawai akan menghapus semua data yang dimilikinya</p>
                         <p><strong id="nama-hapus"></strong></p>
                     </div>
 

@@ -1,6 +1,6 @@
 @extends('home.layouts.app')
 
-@section('title', 'Perangkat Kelurahan')
+@section('title', 'Pegawai')
 
 @section('content')
     @include('home.layouts.header')

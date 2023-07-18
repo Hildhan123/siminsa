@@ -11,7 +11,7 @@
                     class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title">{{$pengumuman->judul}}</h2>
-                    <blockquote class="text-muted text-right"> <small>{{ $pengumuman->created_at }}</small> </blockquote>
+                    <blockquote class="text-muted text-right"> <small>{{ \Carbon\Carbon::parse($pengumuman->created_at)->format('d M Y, H:i') }}</small> </blockquote>
                     <p class="card-text">{!! $pengumuman->konten !!}</p>
                 </div>
             </div>

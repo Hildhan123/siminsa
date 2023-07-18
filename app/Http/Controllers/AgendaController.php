@@ -81,7 +81,7 @@ class AgendaController extends Controller
         $agenda = $this->getTablebyDesa('agendas');
         return view('agenda.show',compact('agenda'));
     }
-    public function detail($kelurahan_slug,$agenda)
+    public function detail($agenda)
     {
         $agenda = $this->firstTablebyId('agendas',$agenda);
         return view('agenda.detail',compact('agenda'));

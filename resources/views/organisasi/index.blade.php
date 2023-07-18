@@ -58,7 +58,7 @@
                             <th>Order Index</th>
                             <th>Title</th>
                             {{-- <th>Deskripsi</th> --}}
-                            <th>Pegawai/Perangkat Desa</th>
+                            <th>Pegawai</th>
                             <th>Aksi</th>
 
                         </tr>

@@ -87,7 +87,7 @@ class LembagaController extends Controller
         $lembaga = $this->getTablebyDesa('lembagas');
         return view('lembaga.show',compact('lembaga'));
     }
-    public function detail($kelurahan_slug,$lembaga)
+    public function detail($lembaga)
     {
         $lembaga = $this->firstTablebyId('lembagas',$lembaga);
         return view('lembaga.detail',compact('lembaga'));

@@ -83,14 +83,14 @@ trait Traits
                     ->get(),
             ];
             // Tambahkan $desa->slug ke URL pada setiap item menu
-            if ($menu['parent']->type !== 1) {
-            $menu['parent']->url = '/' . $desa->slug . $menu['parent']->url;
-            }
-            foreach ($menu['children'] as $child) {
-                if ($child->type !== 1) {
-                $child->url = '/' . $desa->slug . $child->url;
-                }
-            }
+            // if ($menu['parent']->type !== 1) {
+            // $menu['parent']->url = '/' . $desa->slug . $menu['parent']->url;
+            // }
+            // foreach ($menu['children'] as $child) {
+            //     if ($child->type !== 1) {
+            //     $child->url = '/' . $desa->slug . $child->url;
+            //     }
+            // }
             $menuItems[] = $menu;
         }
         return $menuItems;

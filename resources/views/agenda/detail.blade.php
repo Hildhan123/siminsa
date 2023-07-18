@@ -19,12 +19,12 @@
                                 <td>Lokasi</td> <td>: {{$agenda->lokasi}}</td>
                             </tr>
                             <tr>  
-                                <td>Tanggal Dimulai</td> <td>: {{$agenda->tanggalDimulai}}</td>
+                                <td>Tanggal Dimulai</td> <td>: {{ \Carbon\Carbon::parse($agenda->tanggalDimulai)->format('d M Y') }}</h5></td>
                             </tr>
                             <tr>  
-                                <td>Tanggal Berakhir</td> <td>: {{$agenda->tanggalBerakhir}}</td>
+                                <td>Tanggal Berakhir</td> <td>: {{ \Carbon\Carbon::parse($agenda->tanggalBerakhir)->format('d M Y') }}</td>
                             </tr>
-                        </table>
+                        </table> <br>
                         {!! $agenda->detail !!}</p>
                 </div>
             </div>

@@ -20,11 +20,11 @@ class modulSeeder extends Seeder
             ['nama'=>'Pengumuman', 'slug'=>'pengumuman-kelurahan'],
             ['nama'=>'Agenda', 'slug'=>'agenda-kelurahan'],
             ['nama'=>'Download', 'slug'=>'download-kelurahan'],
-            ['nama'=>'Laporan APB', 'slug'=>'laporan-apbdes'],
+            // ['nama'=>'Laporan APB', 'slug'=>'laporan-apbdes'],
             ['nama'=>'Galeri', 'slug'=>'gallery'],
             ['nama'=>'Produk', 'slug'=>'produk-kelurahan'],
             ['nama'=>'Berita', 'slug'=>'berita'],
-            ['nama'=>'Pages', 'slug'=>'p'],
+            // ['nama'=>'Pages', 'slug'=>'p'],
             ['nama'=>'Potensi', 'slug'=>'potensi-kelurahan'],
         ];
         DB::table('moduls')->insert($data);

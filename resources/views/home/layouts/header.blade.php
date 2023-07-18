@@ -1,32 +1,21 @@
-<section class="jumbotron  d-table w-100">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-12 text-center">
-                <div class="page-next-level">
-                    <h4 class="title"> @yield('title') </h4>
-                </div>
-            </div>
-        </div>
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">@yield('title')</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                    @foreach (Request::segments() as $segment)
+                    @php
+                        $url = URL::to(implode('/', array_slice(Request::segments(), 0, $loop->index + 1)));
+                    @endphp
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ $url }}">{{ ucfirst($segment) }}</a></li>
+                    @endforeach
+                {{-- <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">About</li> --}}
+            </ol>
+        </nav>
     </div>
-</section>
-<div class="row justify-content-center" style="position: relative; top: -50px;">
-    <nav aria-label="breadcrumb" class="d-inline-block">
-        {{-- <ul class="breadcrumb bg-white rounded shadow mb-0">
-            <li class="breadcrumb-item"><a href="http://sumberejo-mranggen.desa.id/"><i
-                        class="fas fa-home"></i></a></li>
-            <li class="breadcrumb-item active">Produk Hukum</li>
-        </ul> --}}
-        <ul class="breadcrumb bg-white rounded shadow mb-0">
-            <li class="breadcrumb-item"><a href="/{{$desa->slug}}"><i
-                class="fas fa-home"></i></a></li>
-            @foreach (Request::segments() as $segment)
-                @php
-                    $url = URL::to(implode('/', array_slice(Request::segments(), 0, $loop->index + 1)));
-                @endphp
-                <li class="breadcrumb-item"><a href="{{ $url }}">{{ ucfirst($segment) }}</a></li>
-            @endforeach
-
-        </ul>
-    </nav>
 </div>
+<!-- Page Header End -->
 

@@ -6,30 +6,18 @@
     @include('home.layouts.header')
 
     <div class="container">
-        <div class="row">
+        <div class="row g-4">
             @forelse ($layanan as $item)
-            <div class="col-lg-6 col-12 mb-4 pb-2">
-                <div class="card blog rounded border-0 shadow overflow-hidden h-100">
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-md-6"> <img
-                            @if ($item->gambar) src="{{ $item->gambar }}" @else src="{{ asset('storage/noimage.jpg') }}" @endif
-                                class="img-fluid" alt="">
-                            <div class="overlay bg-dark"></div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img class="img-fluid" @if ($item->gambar) src="{{ $item->gambar }}" @else src="{{ asset('storage/noimage.jpg') }}" @endif alt="">
                         </div>
-                        <div class="col-md-6">
-                            <div class="card-body content">
-                                <h5><a href="{{route('layanan.detail',['layanan' => $item->id, 'kelurahan_slug' => $desa->slug, 'slug' => Str::slug($item->judul)])}}"
-                                        class="card-title title text-dark">{{$item->judul}}</a></h5>
-                                <p class="text-muted mb-0">{{strip_tags(Illuminate\Support\Str::words($item->konten,25))}}</p>
-                                <div class="post-meta d-flex justify-content-between mt-3"> <a
-                                        href="{{route('layanan.detail',['layanan' => $item->id, 'kelurahan_slug' => $desa->slug, 'slug' => Str::slug($item->judul)])}}"
-                                        class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 class="mb-3">{{$item->judul}}</h4>
+                        <p>{{strip_tags(Illuminate\Support\Str::words($item->konten,25))}}</p>
+                        <a class="btn-slide mt-2" href="{{route('layanan.detail',['layanan' => $item->id, 'slug' => Str::slug($item->judul)])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
-            </div>
             @empty
                 Tidak ada Data
             @endforelse

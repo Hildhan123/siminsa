@@ -94,7 +94,7 @@ class ProdukController extends Controller
         $produk = $this->getTablebyDesa('produks');
         return view('produk.show',compact('produk'));
     }
-    public function detail($kelurahan_slug,$produk)
+    public function detail($produk)
     {
         $produk = $this->firstTablebyId('produks',$produk);
         return view('produk.detail',compact('produk'));

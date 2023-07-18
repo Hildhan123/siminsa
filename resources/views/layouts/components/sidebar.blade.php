@@ -92,7 +92,7 @@
                 <a class="nav-link child @if (Request::segment(2) == 'pegawai' || Request::segment(2) == 'tambah-pegawai') active @endif"
                     href="{{ route('pegawai.index') }}">
                     {{-- <i class="fas fa-users text-info"></i> --}}
-                    <span class="nav-link-inner--text">Perangkat Desa</span>
+                    <span class="nav-link-inner--text">Pegawai</span>
                 </a>
                 <a class="nav-link child @if (Request::segment(2) == 'organisasi' || Request::segment(2) == 'tambah-organisasi') active @endif"
                     href="{{ route('organisasi.index') }}">
@@ -102,7 +102,7 @@
                 <a class="nav-link child @if (Request::segment(2) == 'lembaga' || Request::segment(2) == 'tambah-lembaga') active @endif"
                     href="{{ route('lembaga.index') }}">
                     {{-- <i class="fas fa-users text-info"></i> --}}
-                    <span class="nav-link-inner--text">Lembaga Desa</span>
+                    <span class="nav-link-inner--text">Lembaga</span>
                 </a>
             </li>
             {{-- <li class="nav-item">
@@ -121,13 +121,13 @@
         </ul>
         <hr class="my-3">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link @if (Request::segment(2) == 'anggaran-realisasi' || Request::segment(2) == 'tambah-anggaran-realisasi') active @endif"
                     href="{{ url('admin/anggaran-realisasi?jenis=pendapatan&tahun=' . date('Y')) }}">
                     <i class="fas fa-coins text-success"></i>
                     <span class="nav-link-inner--text">Kelola APBDes</span>
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item">
                 <a class="nav-link @if (Request::segment(2) == 'surat' || Request::segment(2) == 'tambah-surat') active @endif"
                     href="{{ route('surat.index') }}">

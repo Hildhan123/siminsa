@@ -75,7 +75,7 @@ class PengumumanController extends Controller
         $pengumuman = $this->getTablebyDesa('pengumumans');
         return view('pengumuman.show',compact('pengumuman'));
     }
-    public function detail($kelurahan_slug,$pengumuman)
+    public function detail($pengumuman)
     {
         $pengumuman = DB::table('pengumumans')->where('id',$pengumuman)->first();
         return view('pengumuman.detail',compact('pengumuman'));

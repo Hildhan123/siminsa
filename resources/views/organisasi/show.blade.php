@@ -17,7 +17,7 @@
             <div class="col-md-3">
                 <ul class="nav nav-list flex-column mb-5">
                     @forelse ($organisasi as $index)
-                    <li class="nav-item "> <a class="nav-link" href="{{route('organisasi.detail',['organisai' => $index->id, 'kelurahan_slug' => $desa->slug])}}">{{$index->title}}</a></li>
+                    <li class="nav-item "> <a class="nav-link" href="{{route('organisasi.detail',['organisai' => $index->id])}}">{{$index->title}}</a></li>
                     @empty
                     Belum ada data
                     @endforelse

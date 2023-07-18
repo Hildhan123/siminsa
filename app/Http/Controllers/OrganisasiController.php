@@ -85,7 +85,7 @@ class OrganisasiController extends Controller
         ])->latest()->get();
         return view('organisasi.show', compact('organisasi', 'gallery'));
     }
-    public function detail($kelurahan_slug, $organisai)
+    public function detail($organisai)
     {
         $desa = app('desa');
         $organisasi = DB::table('organisasis')

@@ -22,6 +22,9 @@ class CreateKelurahanTable extends Migration
             $table->integer('kodepos');
             $table->string('kontak');
             $table->string('logo', 64);
+            $table->longText('iframe');
+            $table->longText('sambutan');
+            $table->longText('selayang_payang');
             $table->string('channel_id', 64)->nullable();
             $table->timestamps();
         });

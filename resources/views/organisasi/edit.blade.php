@@ -62,7 +62,7 @@
                         @error('deskripsi') <span class="invalid-feedback font-weight-bold">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group" id="struk" style="display:block">
-                        <label class="form-control-label" for="jabatan">Pegawai/Perangkat Desa</label>
+                        <label class="form-control-label" for="jabatan">Pegawai</label>
                         <select id="jabatan1" name="pegawai_id" class="form-control selectpicker" data-live-search="true">
                             <option value="" >Pilih pegawai</option>
                             @foreach ($pegawai as $index)

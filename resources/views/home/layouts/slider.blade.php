@@ -1,34 +1,19 @@
-@php $i=0 @endphp
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
+<div class="container-fluid p-0 pb-5">
+    <div class="owl-carousel header-carousel position-relative mb-5">
         @foreach ($gallery as $slider)
-            <li data-target="#myCarousel" @if ($i == 0) class="active" @endif
-                data-slide-to="{{ $i++ }}"></li>
-        @endforeach
-    </ol>
-    <div class="carousel-inner">
-        @php $i = 0 @endphp
-        @forelse ($gallery as $slider)
-            <div class="carousel-item @if ($i == 0) active @endif">
-                <img src="{{ $slider->gallery }}">
-
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        {{-- <h1>Example headline.</h1> --}}
-                        <p class="bg-dark" style="opacity: 70%">{{ $slider->caption }}</p>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="{{ $slider->gallery }}" alt="" style="height: 480px">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                    style="background: rgba(6, 3, 21, .5);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-10 col-lg-8">
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">{{$slider->caption}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            {{ $i++ }}
-        @empty
-        @endforelse
+        @endforeach
     </div>
-    <button class="carousel-control-prev" type="button" data-target="#myCarousel" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-target="#myCarousel" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </button>
 </div>

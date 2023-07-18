@@ -75,7 +75,7 @@ class PotensiController extends Controller
         $potensi = $this->getTablebyDesa('potensis');
         return view('potensi.show', compact('potensi'));
     }
-    public function detail($kelurahan_slug,$potensi)
+    public function detail($potensi)
     {
         $potensi = DB::table('potensis')->where('id', $potensi)->first();
         return view('potensi.detail', compact('potensi'));

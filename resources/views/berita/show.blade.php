@@ -11,7 +11,7 @@
                     class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title">{{$berita->judul}}</h2>
-                    <blockquote class="text-muted text-right"> <small>{{ $berita->created_at }}</small> </blockquote>
+                    <blockquote class="text-muted text-right"> <small>{{ \Carbon\Carbon::parse($berita->created_at)->format('d M Y, H:i') }}</small> </blockquote>
                     <p class="card-text">{!! $berita->konten !!}</p>
                 </div>
             </div>

@@ -115,7 +115,7 @@ class PegawaiController extends Controller
         $pegawai = $this->getTablebyDesa('pegawais');
         return view('pegawai.show',compact('pegawai'));
     }
-    public function detail($kelurahan_slug,$pegawai)
+    public function detail($pegawai)
     {   
         $pegawai = $this->firstTablebyId('pegawais',$pegawai);
         return view('pegawai.detail',compact('pegawai'));

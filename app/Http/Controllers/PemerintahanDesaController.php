@@ -105,7 +105,7 @@ class PemerintahanDesaController extends Controller
     //     return view('pages.show', compact('pemerintahan_desa'));
     // }
 
-    public function show($kelurahan_slug, $pemerintahan_desa, $slug)
+    public function show($pemerintahan_desa, $slug)
     {
         $pemerintahan_desa = PemerintahanDesa::where('id',$pemerintahan_desa)->first();
         if ($slug != Str::slug($pemerintahan_desa->judul)) {

@@ -76,7 +76,7 @@ class LayananController extends Controller
         $layanan = $this->getTablebyDesa('layanans');
         return view('layanan.show',compact('layanan'));
     }
-    public function detail($kelurahan_slug,$layanan)
+    public function detail($layanan)
     {
         $layanan = $this->firstTablebyId('layanans',$layanan);
         return view('layanan.detail',compact('layanan'));

@@ -43,7 +43,7 @@
                             <td data-title="Alamat">{{ $index->alamat }}</td>
                             {{-- <td data-title="Profil">{{ $index->profil }}</td> --}}
                             <td data-title="Aksi" align="center">
-                                <a href="{{ Route('lembaga.detail', ['lembaga' => $index->id, 'kelurahan_slug' => $desa->slug, 'slug' => Str::slug($index->nama)]) }}">Detail</a>
+                                <a href="{{ Route('lembaga.detail', ['lembaga' => $index->id, 'slug' => Str::slug($index->nama)]) }}">Detail</a>
                             </td>
                         </tr>
                     @empty

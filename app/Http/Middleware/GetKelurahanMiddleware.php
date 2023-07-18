@@ -18,7 +18,7 @@ class GetKelurahanMiddleware
     public function handle($request, Closure $next)
     {
         $nama = $request->route('kelurahan_slug');
-
+        //$nama = 'mangunjiwan'; //disesuaikan dengan nama desa
         // Ambil data Desa/Kelurahan berdasarkan 'nama'
         $desa = DB::table('kelurahan')->where('slug', $nama)->first();
 
