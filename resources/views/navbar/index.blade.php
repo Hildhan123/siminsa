@@ -147,7 +147,7 @@
                                 <td data-title="Aksi" align="center">
                                     <a href="{{ Route('navbar.edit', ['navbar' => $index->id]) }}"><i
                                             class="fas fa-edit"></i></a> |
-                                    <a data-action="{{ route('navbar.destroy', $index->id) }}" data-toggle="modal"
+                                    <a data-action="{{ route('navbar.destroy', ['navbar' => $index->id]) }}" data-toggle="modal"
                                         href="#modal-hapus" title="Hapus"><i class="fas fa-trash"
                                             style="color: red"></i></a>
                                 </td>

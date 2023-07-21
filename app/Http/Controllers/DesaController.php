@@ -72,9 +72,10 @@ class DesaController extends Controller
                 'kontak'        => ['required', 'string', 'numeric'],
                 // 'nama_kepala_desa'      => ['required', 'max:64', 'string'],
                 // 'alamat_kepala_desa'    => ['required', 'string']
+                'iframe'    => 'nullable',
             ]);
 
-            if ($request->nama_kelurahan != $desa->nama_kelurahan  || $request->kodepos != $desa->kodepos || $request->alamat != $desa->alamat || $request->kontak != $desa->kontak) {
+            if ($request->nama_kelurahan != $desa->nama_kelurahan  || $request->kodepos != $desa->kodepos || $request->alamat != $desa->alamat || $request->kontak != $desa->kontak || $request->iframe != $desa->iframe) {
                 $desa->update($data);
                 return redirect()->back()->with('success','Profil desa berhasil di perbarui');
             } else {
@@ -83,4 +84,13 @@ class DesaController extends Controller
         }
     }
 
+    public function iframe(Request $request, Desa $desa)
+    {
+        $data = $request->validate([
+            'iframe' => 'required',
+        ]);
+
+        $desa->update($data);
+        return redirect()->back()->with('success','Maps desa berhasil di perbarui');
+    }
 }

@@ -56,20 +56,19 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', 'HomeController@index2')->name('home.index2');
 // Route::get('/panduan', 'HomeController@panduan')->name('panduan');
 
-Route::group(['middleware' => []], function () {
+Route::group(['middleware' => ['get.kelurahan']], function () {
         // Ambil data Desa/Kelurahan berdasarkan 'nama'
-        $desa = DB::table('kelurahan')->find(1);
+        // $desa = DB::table('kelurahan')->find(1);
 
-        if ($desa) {
-            // Bagikan data 'desa' ke semua controller
-            app()->instance('desa', $desa);
-            app()->instance('kelurahan', $desa);
+        // if ($desa) {
+        //     // Bagikan data 'desa' ke semua controller
+        //     app()->instance('desa', $desa);
+        //     app()->instance('kelurahan', $desa);
 
-            View::share('desa', $desa);
-        } else {
-            return abort(404);
-        }
-
+        //     View::share('desa', $desa);
+        // } else {
+        //     return abort(404);
+        // }
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
     Route::get('/organisasi/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');
@@ -130,6 +129,13 @@ Route::group(['middleware' => ['web', 'auth','kelurahan']], function () {
         Route::get('/profil-kelurahan', 'DesaController@index')->name('profil-desa');
         Route::patch('/update-kelurahan/{desa}', 'DesaController@update')->name('update-desa');
         Route::resource('/profil-kelurahan', 'DesaController')->except('index','update','edit');
+
+        Route::patch('/iframe/{desa}', 'DesaController@iframe')->name('iframe');
+        
+        Route::get('/selayang-pandang', 'TemplateController@selayang')->name('selayang-pandang');
+        Route::patch('/selayang-pandang/{template}', 'TemplateController@updateSelayang')->name('selayang-pandang.update');
+        Route::get('/sambutan', 'TemplateController@sambutan')->name('sambutan');
+        Route::patch('/sambutan/{template}', 'TemplateController@updateSambutan')->name('sambutan.update');
     
         // Route::get('/tambah-surat', 'SuratController@create')->name('surat.create');
         // Route::patch('/cetakSurat/{cetak_surat}/arsip', 'CetakSuratController@arsip')->name('cetakSurat.arsip');

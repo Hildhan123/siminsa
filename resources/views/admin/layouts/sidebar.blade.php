@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="text-center pt-0" href="{{ route('home.index2') }}">
+    <a class="text-center pt-0" href="{{ route('admin.dashboard') }}">
         <h1 class="text-primary font-weight-900 text-uppercase">Super Admin</h1>
     </a>
     <!-- User -->
@@ -44,7 +44,7 @@
         <div class="navbar-collapse-header d-md-none">
             <div class="row">
                 <div class="col-6 collapse-brand">
-                    <a href="{{ route('home.index2') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <h1 class="text-primary"><b>Super Admin</b></h1>
                     </a>
                 </div>

@@ -24,29 +24,21 @@
                         </h2>
                     </div>
                 </div>
+                @if($selayang->active == 1)
                 <div class="container-fluid overflow-hidden py-5 px-lg-0">
                     <div class="container about py-5 px-lg-0">
                         <div class="row g-5 mx-lg-0">
                             <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
                                 <div class="position-relative h-100">
-                                    <img class="position-absolute img-fluid" src="{{ asset('tema1/img/pejabat.png') }}"
+                                    <img class="position-absolute img-fluid" @if($selayang->photo) src="{{$selayang->photo}}" @else src="{{ asset('tema1/img/pejabat.png') }}" @endif
                                         style="object-fit: cover;" alt="">
                                 </div>
                             </div>
+                            
                             <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
                                 {{-- <h6 class="text-secondary text-uppercase mb-3">Selayang Pandang</h6> --}}
-                                <h1 class="mb-5">Selayang Pandang</h1>
-                                <p class="mb-5">Segala Puji dan Syukur senantiasa kita panjatkan kehadirat Allah SWT,
-                                    Website ini merupakan salah satu upaya menginformasikan, mensosialisasikan berbagai
-                                    aspek pembangunan yang telah, sedang dan akan dilaksanakan kepada masyarakat luas secara
-                                    elektronik.
-                                    <br><br>
-                                    Website Kecamatan Bonang ini dikemas sedemikian rupa, tidak hanya gambaran secara umum
-                                    mengenai Kecamatan Bonang, akan tetapi menyangkut semua aspek program dan kegiatan
-                                    pembangunan dari mulai proses perencanaan, penganggaran, monitoring dan evaluasi serta
-                                    capaian keberhasilan pembangunan, sehingga dapat menjadi sumber data dan informasi bagi
-                                    semua stakeholders dan masyarakat pada umumnya.
-                                </p>
+                                <h1 class="mb-5">{{$selayang->title}}</h1>
+                                {!! $selayang->konten !!}
                                 {{-- <div class="row g-4 mb-5">
                                 <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                                     <i class="fa fa-globe fa-3x text-primary mb-3"></i>
@@ -61,10 +53,12 @@
                             </div> --}}
                                 {{-- <a href="" class="btn btn-primary py-3 px-5">Telusuri lebih dalam</a> --}}
                             </div>
+                           
                         </div>
                     </div>
                 </div>
                 <hr>
+                @endif
                 <div class="col-lg-4 col-md-5 col-12">
                     @include('home.layouts.sidebar')
                     <hr>

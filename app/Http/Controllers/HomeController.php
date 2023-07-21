@@ -36,6 +36,10 @@ class HomeController extends Controller
             ->orderBy('order', 'asc')
             ->select('*', 'organisasis.id as id')
             ->get();
+        $selayang = DB::table('template')->where([
+            'user_id' => $desa->user_id,
+            'key' => 'selayang',
+        ])->first();
 
         foreach (Gallery::where(['slider' => null, 'organisasi' => null,'user_id' => $desa->user_id])->latest()->get() as $key => $value) {
             $gambar = [
@@ -63,7 +67,7 @@ class HomeController extends Controller
             return strlen($a['created_at']) <=> strlen($b['created_at']);
         });
 
-        return view('home.index', compact('desa', 'gallery', 'berita', 'galleries', 'pengumuman', 'agenda', 'organisasi'));
+        return view('home.index', compact('desa', 'gallery', 'berita', 'galleries', 'pengumuman', 'agenda', 'organisasi','selayang'));
     }
 
     public function index2()

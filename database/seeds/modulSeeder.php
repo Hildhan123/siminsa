@@ -14,7 +14,7 @@ class modulSeeder extends Seeder
     {
         $data = [
             ['nama'=>'Organisasi', 'slug'=>'organisasi'],
-            ['nama'=>'Perangkat', 'slug'=>'perangkat-kelurahan'],
+            ['nama'=>'Pegawai', 'slug'=>'perangkat-kelurahan'],
             ['nama'=>'Lembaga', 'slug'=>'lembaga-kelurahan'],
             ['nama'=>'Layanan', 'slug'=>'layanan-kelurahan'],
             ['nama'=>'Pengumuman', 'slug'=>'pengumuman-kelurahan'],

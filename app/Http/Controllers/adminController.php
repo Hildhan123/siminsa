@@ -113,6 +113,10 @@ class adminController extends Controller
     }
     public function dataCreate()
     {
+        $kelurahan = DB::table('kelurahan')->count();
+        if ($kelurahan > 0) {
+            return back()->with('error','Data kelurahan sudah ada');
+        }
         $id = session('id');
         $admin = DB::table('admins')->where('id', $id)->first();
         return view('admin.tambah-data', compact('admin'));
@@ -149,6 +153,26 @@ class adminController extends Controller
             'kodepos' => $data['kodepos'],
             'kontak' => '08123456789',
             'logo' => 'logo.png',
+            'created_at' => date('Y-m-d H:i:s'),
+            "updated_at" => date('Y-m-d H:i:s'),
+        ]);
+
+        $template = DB::table('template')->insert([
+            'user_id'   => $user->id,
+            'key'       => 'selayang',
+            'title'     => 'Selayang Pandang',
+            'konten'    => '<p style="margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat nam at lectus urna. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Nunc id cursus metus aliquam eleifend mi. Sit amet risus nullam eget felis. Consequat nisl vel pretium lectus quam id leo. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. A pellentesque sit amet porttitor eget dolor morbi. Odio tempor orci dapibus ultrices in iaculis nunc sed augue. </p><p style="margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;"><span style="font-size: 1rem;">Amet purus gravida quis blandit turpis. Sed faucibus turpis in eu mi bibendum neque egestas. Posuere urna nec tincidunt praesent semper feugiat nibh. Quisque sagittis purus sit amet volutpat consequat mauris. Non sodales neque sodales ut etiam. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices dui. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Semper feugiat nibh sed pulvinar.</span><br></p>',
+            'active'    => 1,
+            'created_at' => date('Y-m-d H:i:s'),
+            "updated_at" => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('template')->insert([
+            'user_id'   => $user->id,
+            'key'       => 'sambutan',
+            'title'     => 'Sambutan Kepala Kelurahan',
+            'konten'    => '<div style="text-align: left;"><p style="margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font-size: 16px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat nam at lectus urna. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Nunc id cursus metus aliquam eleifend mi. Sit amet risus nullam eget felis. Consequat nisl vel pretium lectus quam id leo. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. A pellentesque sit amet porttitor eget dolor morbi. Odio tempor orci dapibus ultrices in iaculis nunc sed augue.</p><p style="margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; font-size: 16px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;"><span style="font-size: 1rem;">Amet purus gravida quis blandit turpis. Sed faucibus turpis in eu mi bibendum neque egestas. Posuere urna nec tincidunt praesent semper feugiat nibh. Quisque sagittis purus sit amet volutpat consequat mauris. Non sodales neque sodales ut etiam. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices dui. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Semper feugiat nibh sed pulvinar.</span></p></div>',
+            'active'    => 1,
             'created_at' => date('Y-m-d H:i:s'),
             "updated_at" => date('Y-m-d H:i:s'),
         ]);
@@ -410,18 +434,6 @@ class adminController extends Controller
                 'title' => 'Download',
                 'type' => 4,
                 'url' => '/download-kelurahan',
-                'target' => null,
-                'enable' => 1,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'user_id' => $user_id,
-                'order' => 6,
-                'parent' => $parentIds[3],
-                'title' => 'Laporan APB',
-                'type' => 4,
-                'url' => '/laporan-apbdes',
                 'target' => null,
                 'enable' => 1,
                 'created_at' => date('Y-m-d H:i:s'),

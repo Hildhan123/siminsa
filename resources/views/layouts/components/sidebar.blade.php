@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="text-center pt-0" href="{{ route('home.index2') }}">
+    <a class="text-center pt-0" href="{{ route('home.index') }}">
         <h1 class="text-primary font-weight-900 text-uppercase">Kelurahan {{ $desa->nama_kelurahan }}</h1>
     </a>
     <!-- User -->
@@ -44,7 +44,7 @@
         <div class="navbar-collapse-header d-md-none">
             <div class="row">
                 <div class="col-6 collapse-brand">
-                    <a href="{{ route('home.index2') }}">
+                    <a href="{{ route('home.index') }}">
                         <h1 class="text-primary"><b>Kelurahan {{ $desa->nama_kelurahan }}</b></h1>
                     </a>
                 </div>
@@ -69,12 +69,40 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home.index',['kelurahan_slug'=>$desa->slug]) }}" target="_blank">
+                <a class="nav-link" href="{{ route('home.index') }}" target="_blank">
                     <i class="fas fa-home text-blue"></i>
                     <span class="nav-link-inner--text">Beranda</span>
                 </a>
             </li>
         </ul>
+        <hr class="my-3">
+        <ul class="navbar-nav accordion" id="accordionExample">
+            <a class="nav-link @if (Request::segment(2) == 'profil-kelurahan' ||
+                    Request::segment(2) == 'tambah-organisasi') active @endif" type="button" data-toggle="hidden"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fas fa-home text-yellow"></i>
+                <span class="nav-link-inner--text">Profil Kelurahan</span>
+            </a>
+            <li class="nav-item" id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                data-parent="#accordionExample">
+                <a class="nav-link child @if (Request::segment(2) == 'profil-kelurahan') active @endif"
+                    href="{{ route('profil-desa') }}">
+                    {{-- <i class="fas fa-users text-info"></i> --}}
+                    <span class="nav-link-inner--text">Informasi</span>
+                </a>
+                <a class="nav-link child @if (Request::segment(2) == 'selayang-pandang') active @endif"
+                    href="{{ route('selayang-pandang') }}">
+                    {{-- <i class="fas fa-users text-info"></i> --}}
+                    <span class="nav-link-inner--text">Selayang Pandang</span>
+                </a>
+                <a class="nav-link child @if (Request::segment(2) == 'sambutan') active @endif"
+                    href="{{ route('sambutan') }}">
+                    {{-- <i class="fas fa-users text-info"></i> --}}
+                    <span class="nav-link-inner--text">Sambutan</span>
+                </a>
+            </li>
+        </ul>
+
         <hr class="my-3">
         <ul class="navbar-nav accordion" id="accordionExample">
             <a class="nav-link @if (Request::segment(2) == 'organisasi' ||
@@ -105,19 +133,6 @@
                     <span class="nav-link-inner--text">Lembaga</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link @if (Request::segment(2) == 'penduduk' || Request::segment(2) == 'tambah-penduduk') active @endif"
-                    href="{{ route('penduduk.index') }}">
-                    <i class="fas fa-users text-info"></i>
-                    <span class="nav-link-inner--text">Kelola Penduduk</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @if (Request::segment(2) == 'dusun' || Request::segment(2) == 'tambah-dusun') active @endif" href="{{ route('dusun.index') }}">
-                    <i class="fas fa-map-marker-alt text-yellow"></i>
-                    <span class="nav-link-inner--text">Kelola Dusun</span>
-                </a>
-            </li> --}}
         </ul>
         <hr class="my-3">
         <ul class="navbar-nav">
@@ -231,13 +246,6 @@
         </ul>
         <hr class="my-3">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link @if (Request::segment(2) == 'profil-kelurahan') active @endif"
-                    href="{{ route('profil-desa') }}">
-                    <i class="fas fa-home text-yellow"></i>
-                    <span class="nav-link-inner--text">Profil Desa</span>
-                </a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link @if (Request::segment(2) == 'profil' || Request::segment(2) == 'pengaturan') active @endif" href="{{ route('profil') }}">
                     <i class="ni ni-single-02 text-yellow"></i>

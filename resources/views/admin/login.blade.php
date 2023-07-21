@@ -16,7 +16,7 @@
                     <small>Masuk</small>
                 </div>
                 <div class="text-center mb-4">
-                    <img height="150px" src="{{ url('/storage/kominfo.png') }}" alt="logo">
+                    <img height="150px" src="{{ url('/storage/logo.png') }}" alt="logo">
                 </div>
                 <form role="form" action="{{ route('admin.login') }}" method="POST">
                     @csrf
