@@ -24,6 +24,9 @@
             @empty
                 Tidak ada Data
             @endforelse
+                <div class="text-center wow fadeInUp">
+                    {{$berita->links()}}
+                </div>
             </div>
             <div class="col-lg-4">
                 @include('home.layouts.sidebar')

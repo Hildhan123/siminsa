@@ -22,5 +22,8 @@
                 Tidak ada Data
             @endforelse
         </div>
+        <div class="text-center wow fadeInUp">
+            {{$layanan->links()}}
+        </div>
     </div>
 @endsection

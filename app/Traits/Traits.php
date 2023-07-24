@@ -23,7 +23,7 @@ trait Traits
     public function getTablebyDesa($table)
     {
         $desa = app('desa');
-        $data = DB::table($table)->where('user_id', $desa->user_id)->latest()->get();
+        $data = DB::table($table)->where('user_id', $desa->user_id)->latest()->paginate(9);
         return $data;
     }
     public function firstTablebyId($table, $id)

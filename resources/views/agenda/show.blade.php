@@ -26,6 +26,9 @@
             @empty
                 Tidak ada Data
             @endforelse
+            <div class="text-center wow fadeInUp">
+                {{$agenda->links()}}
+            </div>
             </div>
             <div class="col-lg-4">
                 @include('home.layouts.sidebar')
