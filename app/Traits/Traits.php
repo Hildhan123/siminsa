@@ -4,6 +4,9 @@ namespace App\Traits;
 
 use Auth;
 use DB;
+use App\Models\Pengunjung;
+use Carbon\Carbon;
+use Request;
 
 trait Traits
 {
@@ -94,5 +97,26 @@ trait Traits
             $menuItems[] = $menu;
         }
         return $menuItems;
+    }
+    public function pengunjung()
+    {
+        $ipAddress = Request::ip();
+
+        if (session()->has('pengunjung')) {
+            
+        } else {
+            session(['pengunjung' => $ipAddress]);
+            Pengunjung::create([
+                'ip_address' => $ipAddress,
+                'waktu_kunjungan' => Carbon::now(),
+            ]);
+        }
+        // $data = [
+        //     'online' => Pengunjung::where('updated_at', '>=', Carbon::now()->subMinutes(15))->count(),
+        //     'kunjunganHariIni' => Pengunjung::whereDate('waktu_kunjungan', Carbon::today())->count(),
+        //     'kunjunganBulanIni' => Pengunjung::whereMonth('waktu_kunjungan', Carbon::now()->month)->count(),
+        //     'kunjunganTahunIni' => Pengunjung::whereYear('waktu_kunjungan', Carbon::now()->year)->count()
+        // ];
+        // return $data; 
     }
 }

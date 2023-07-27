@@ -69,6 +69,7 @@ Route::group(['middleware' => ['get.kelurahan']], function () {
         // } else {
         //     return abort(404);
         // }
+
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::get('/organisasi', 'OrganisasiController@show')->name('organisasi.show');
     Route::get('/organisasi/{organisai}', 'OrganisasiController@detail')->name('organisasi.detail');

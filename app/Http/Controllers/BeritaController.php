@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class BeritaController extends Controller
 {
@@ -36,8 +37,9 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function berita()
+    public function berita(Request $request)
     {
+        $desa = app('desa');
         $berita = $this->getTablebyDesa('berita');
         // $berita = Berita::orderBy('id','desc')->paginate(12);
         // $desa = Desa::find(1);
@@ -49,7 +51,41 @@ class BeritaController extends Controller
         // }
 
         // $berita->appends($request->only('cari'));
-        return view('berita.berita', compact('berita'));
+        $archive = DB::table('berita')
+        ->where('user_id', $desa->user_id)
+        ->selectRaw('MONTHNAME(created_at) AS month, YEAR(created_at) AS year, COUNT(*) AS count')
+        ->groupBy('year', 'month')
+        ->orderByRaw('MIN(created_at) DESC')
+        ->get();
+
+        $archives = [];
+        foreach ($archive as $row) {
+            $data = [
+                'month' => $row->month,
+                'year' => $row->year,
+                'count' => $row->count,
+            ];
+
+            $monthYear = $row->month . ' ' . $row->year;
+            if (array_key_exists($monthYear, $archives)) {
+                $archives[$monthYear]['jumlah'] += $row->count;
+            } else {
+                $archives[$monthYear] = $data;
+            }
+        }
+
+        $selectedMonth = $request->query('month');
+        $selectedYear = $request->query('year');
+        $selectedMonthYear = $selectedMonth . ' ' . $selectedYear;
+
+        if ($selectedMonth && $selectedYear) {
+            $berita = DB::table('berita')
+                ->whereMonth('created_at', '=', date('m', strtotime($selectedMonth)))
+                ->whereYear('created_at', '=', $selectedYear)
+                ->where('user_id', $desa->user_id)->latest()->paginate(9);
+        }
+
+        return view('berita.berita', compact('berita','archives','selectedMonthYear'));
     }
 
     /**

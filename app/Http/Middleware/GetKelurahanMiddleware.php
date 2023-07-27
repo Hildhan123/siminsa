@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use DB;
 use View;
+use App\Pengunjung;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class GetKelurahanMiddleware
 {
@@ -28,6 +31,16 @@ class GetKelurahanMiddleware
 
             View::share('desa', $desa);
 
+            $ipAddress = $request->ip();
+
+            if (!session()->has('pengunjung')) {
+                Pengunjung::create([
+                    'ip_address' => $ipAddress,
+                    'waktu_kunjungan' => Carbon::now(),
+                ]);
+                Session::put('pengunjung', $ipAddress, now()->addHour(2));
+            }
+            
             return $next($request);
         } else {
             return abort(404);

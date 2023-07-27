@@ -8,36 +8,73 @@
         <div class="row g-4">
             <div class="col-lg-8">
                 @forelse ($berita as $item)
-                <div class="wow fadeInUp mb-4" data-wow-delay="0.3s">
-                    <div class="row service-item p-4">
-                        <div class="overflow-hidden mb-4 col">
-                            <img class="img-fluid" @if ($item->gambar) src="{{ $item->gambar }}" @else src="{{ asset('storage/noimage.jpg') }}" @endif alt="">
-                        </div>
-                        <div class="col">
-                            <h4 class="mb-3">{{$item->judul}}</h4>
-                            <p class="text-muted mb-0">Posted on : {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, H:i') }}</p><br>
-                            <p>{{strip_tags(Illuminate\Support\Str::words($item->konten,25))}}</p>
-                            <a class="btn-slide mt-2" href="{{route('berita.show', ['berita' => $item->id, 'slug' => Str::slug($item->judul)])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                    <div class="wow fadeInUp mb-4" data-wow-delay="0.3s">
+                        <div class="row service-item p-4">
+                            <div class="overflow-hidden mb-4 col">
+                                <img class="img-fluid"
+                                    @if ($item->gambar) src="{{ $item->gambar }}" @else src="{{ asset('storage/noimage.jpg') }}" @endif
+                                    alt="">
+                            </div>
+                            <div class="col">
+                                <h4 class="mb-3">{{ $item->judul }}</h4>
+                                <p class="text-muted mb-0">Posted on :
+                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, H:i') }}</p><br>
+                                <p>{{ strip_tags(Illuminate\Support\Str::words($item->konten, 25)) }}</p>
+                                <a class="btn-slide mt-2"
+                                    href="{{ route('berita.show', ['berita' => $item->id, 'slug' => Str::slug($item->judul)]) }}"><i
+                                        class="fa fa-arrow-right"></i><span>Read More</span></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @empty
-                Tidak ada Data
-            @endforelse
+                @empty
+                    Tidak ada Data
+                @endforelse
                 <div class="text-center wow fadeInUp">
-                    {{$berita->links()}}
+                    {{ $berita->links() }}
                 </div>
             </div>
             <div class="col-lg-4">
                 @include('home.layouts.sidebar')
+                <hr>
+                <div class="wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item p-4 text-center">
+                        <div class="form-group">
+                            <label class="form-label" for="archive">Archives</label>
+                            <select id="archive" name="archive" class="form-select">
+                                <option value="">Pilih archive</option>
+                                @foreach ($archives as $monthYear => $item)
+                                    <option value="?month={{ urlencode($item['month']) }}&year={{ $item['year'] }}"
+                                        @if ($selectedMonthYear == $monthYear) selected @endif>
+                                        {{ $item['month'] }} {{ $item['year'] }} ({{ $item['count'] }})
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
 
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        // Ketika dropdown dipilih, akses route berita dengan query month dan tahun
+        $("#archive").change(function() {
+            var selectedArchive = $(this).val();
+            if (selectedArchive !== '') {
+                window.location.href = "{{ route('berita') }}" + selectedArchive;
+            } else {
+                window.location.href = "{{ route('berita') }}";
+            }
+        });
+    });
+</script>
+@endpush
 
 {{-- @extends('layouts.layout')
-@section('title', 'Website Resmi Pemerintah Desa '. $desa->nama_desa . ' - Berita')
+@section('title', 'Website Resmi Pemerintah Desa ' . $desa->nama_desa . ' - Berita')
 
 @section('styles')
 <meta name="description" content="Macam-macam berita Desa {{ $desa->nama_desa }}, Kecamatan {{ $desa->nama_kecamatan }}, Kabupaten {{ $desa->nama_kabupaten }}.">
