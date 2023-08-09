@@ -129,7 +129,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita, $slug)
+    public function show($kelurahan_slug, Berita $berita, $slug)
     {
         // $desa = Desa::find(1);
         //$beritas = Berita::where('id','!=', $berita->id)->inRandomOrder()->limit(3)->get();

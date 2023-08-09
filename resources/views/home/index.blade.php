@@ -87,7 +87,7 @@
                                         <h4 class="mb-3">{{$item->judul}}</h4>
                                         <p class="text-muted mb-0">Posted on : {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, H:i') }}</p><br>
                                         <p>{{strip_tags(Illuminate\Support\Str::words($item->konten,25))}}</p>
-                                        <a class="btn-slide mt-2" href="{{route('berita.show', ['berita' => $item->id, 'slug' => Str::slug($item->judul)])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                                        <a class="btn-slide mt-2" href="{{route('berita.show', ['berita' => $item->id, 'slug' => Str::slug($item->judul),'kelurahan_slug' => $desa->slug])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                         <h4 class="mb-3">{{$item->judul}}</h4>
                                         <p class="text-muted mb-0">Posted on : {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, H:i') }}</p><br>
                                         <p>{{strip_tags(Illuminate\Support\Str::words($item->konten,25))}}</p>
-                                        <a class="btn-slide mt-2" href="{{route('pengumuman.detail', ['pengumuman' => $item->id, 'slug' => Str::slug($item->judul)])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                                        <a class="btn-slide mt-2" href="{{route('pengumuman.detail', ['pengumuman' => $item->id, 'slug' => Str::slug($item->judul),'kelurahan_slug' => $desa->slug])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                                         <p>{{strip_tags(Illuminate\Support\Str::words($item->detail,25))}}</p><br>
                                         <h5 class="text-primary"><i class="fa fa-calendar mb-3"></i> : {{ \Carbon\Carbon::parse($item->tanggalDimulai)->format('d M Y') }}</h5>
                                         <h5 class="text-primary"><i class="fa fa-home mb-3"></i> : {{ $item->lokasi }}</h5>
-                                        <a class="btn-slide mt-2" href="{{route('agenda.detail', ['agenda' => $item->id, 'slug' => Str::slug($item->nama)])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                                        <a class="btn-slide mt-2" href="{{route('agenda.detail', ['agenda' => $item->id, 'slug' => Str::slug($item->nama),'kelurahan_slug' => $desa->slug])}}"><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                                     </div>
                                 </div>
                             </div>

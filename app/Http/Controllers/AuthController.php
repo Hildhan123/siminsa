@@ -49,6 +49,6 @@ class AuthController extends Controller
     public function keluar()
     {
         Auth::logout();
-        return redirect()->route('home.index');
+        return redirect()->route('masuk');
     }
 }

@@ -21,7 +21,7 @@
                                     {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, H:i') }}</p><br>
                                 <p>{{ strip_tags(Illuminate\Support\Str::words($item->konten, 25)) }}</p>
                                 <a class="btn-slide mt-2"
-                                    href="{{ route('berita.show', ['berita' => $item->id, 'slug' => Str::slug($item->judul)]) }}"><i
+                                    href="{{ route('berita.show', ['berita' => $item->id, 'slug' => Str::slug($item->judul),'kelurahan_slug' => $desa->slug]) }}"><i
                                         class="fa fa-arrow-right"></i><span>Read More</span></a>
                             </div>
                         </div>
@@ -64,9 +64,9 @@
         $("#archive").change(function() {
             var selectedArchive = $(this).val();
             if (selectedArchive !== '') {
-                window.location.href = "{{ route('berita') }}" + selectedArchive;
+                window.location.href = "{{ route('berita',['kelurahan_slug' => $desa->slug]) }}" + selectedArchive;
             } else {
-                window.location.href = "{{ route('berita') }}";
+                window.location.href = "{{ route('berita',['kelurahan_slug' => $desa->slug]) }}";
             }
         });
     });

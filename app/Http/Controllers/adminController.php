@@ -113,10 +113,10 @@ class adminController extends Controller
     }
     public function dataCreate()
     {
-        $kelurahan = DB::table('kelurahan')->count();
-        if ($kelurahan > 0) {
-            return back()->with('error','Data kelurahan sudah ada');
-        }
+        // $kelurahan = DB::table('kelurahan')->count();
+        // if ($kelurahan > 0) {
+        //     return back()->with('error','Data kelurahan sudah ada');
+        // }
         $id = session('id');
         $admin = DB::table('admins')->where('id', $id)->first();
         return view('admin.tambah-data', compact('admin'));

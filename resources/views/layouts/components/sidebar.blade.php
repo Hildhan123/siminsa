@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="text-center pt-0" href="{{ route('home.index') }}">
+    <a class="text-center pt-0" href="{{ route('home.index',['kelurahan_slug' => $desa->slug]) }}">
         <h1 class="text-primary font-weight-900 text-uppercase">Kelurahan {{ $desa->nama_kelurahan }}</h1>
     </a>
     <!-- User -->
@@ -44,7 +44,7 @@
         <div class="navbar-collapse-header d-md-none">
             <div class="row">
                 <div class="col-6 collapse-brand">
-                    <a href="{{ route('home.index') }}">
+                    <a href="{{ route('home.index',['kelurahan_slug' => $desa->slug]) }}">
                         <h1 class="text-primary"><b>Kelurahan {{ $desa->nama_kelurahan }}</b></h1>
                     </a>
                 </div>
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home.index') }}" target="_blank">
+                <a class="nav-link" href="{{ route('home.index',['kelurahan_slug' => $desa->slug]) }}" target="_blank">
                     <i class="fas fa-home text-blue"></i>
                     <span class="nav-link-inner--text">Beranda</span>
                 </a>
